@@ -1145,11 +1145,29 @@ abstract class AppLocalizations {
   /// **'Table No.'**
   String get table_no;
 
-  /// No description provided for @event.
+  /// No description provided for @competition_event.
   ///
   /// In en, this message translates to:
-  /// **'Event and Bazaar'**
-  String get event;
+  /// **'Competition and Event'**
+  String get competition_event;
+
+  /// No description provided for @welcome_back.
+  ///
+  /// In en, this message translates to:
+  /// **'Hi, Welcome Back'**
+  String get welcome_back;
+
+  /// No description provided for @search_event.
+  ///
+  /// In en, this message translates to:
+  /// **'Search Event'**
+  String get search_event;
+
+  /// No description provided for @news.
+  ///
+  /// In en, this message translates to:
+  /// **'News'**
+  String get news;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

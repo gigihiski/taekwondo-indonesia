@@ -16,16 +16,6 @@ class NavigationItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final activeBoxShadow = (active)
-        ? [
-            BoxShadow(
-              color: AppColors.darkCharcoal,
-              spreadRadius: 1,
-              offset: Offset(2, 2),
-            ),
-          ]
-        : null;
-
     return InkWell(
       onTap: callback,
       child: Container(
@@ -33,13 +23,9 @@ class NavigationItem extends StatelessWidget {
         height: 48,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          border: Border.all(
-            color: (active) ? AppColors.darkCharcoal : Colors.transparent,
-            width: 1,
-          ),
+          border: Border.all(color: Colors.transparent, width: 1),
           borderRadius: BorderRadius.circular(24),
           color: active ? AppColors.secondary : Colors.transparent,
-          boxShadow: activeBoxShadow,
         ),
         child: SvgPicture.asset(
           svgSource,

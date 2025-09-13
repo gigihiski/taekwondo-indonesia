@@ -24,18 +24,6 @@ class ProfileView extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<ProfileMenu> profileMenus = [
       ProfileMenu(
-        icon: AppAssets.email,
-        title: L10n.localizations(context).my_order,
-      ),
-      ProfileMenu(
-        icon: AppAssets.location,
-        title: L10n.localizations(context).delivery_address,
-      ),
-      ProfileMenu(
-        icon: AppAssets.paymentMethod,
-        title: L10n.localizations(context).payment_method,
-      ),
-      ProfileMenu(
         icon: AppAssets.help,
         title: L10n.localizations(context).help,
       ),
@@ -93,7 +81,7 @@ class ProfileView extends StatelessWidget {
                     context: context,
                     page: WebviewPage(
                       title: L10n.localizations(context).help,
-                      url: "https://www.kampoengsteak.co.id.",
+                      url: "https://taekwondo.or.id",
                     ),
                     route: WebviewPage.routeSettings,
                   ).push();
@@ -108,7 +96,7 @@ class ProfileView extends StatelessWidget {
                     context: context,
                     page: WebviewPage(
                       title: L10n.localizations(context).privacy_policy,
-                      url: "https://www.kampoengsteak.co.id.",
+                      url: "https://taekwondo.or.id",
                       isShowBar: true,
                     ),
                     route: WebviewPage.routeSettings,
@@ -118,7 +106,7 @@ class ProfileView extends StatelessWidget {
                     context: context,
                     page: WebviewPage(
                       title: L10n.localizations(context).terms_conditions,
-                      url: "https://www.kampoengsteak.co.id.",
+                      url: "https://taekwondo.or.id",
                       isShowBar: true,
                     ),
                     route: WebviewPage.routeSettings,
@@ -128,7 +116,7 @@ class ProfileView extends StatelessWidget {
                     context: context,
                     page: WebviewPage(
                       title: L10n.localizations(context).about_us,
-                      url: "https://www.kampoengsteak.co.id.",
+                      url: "https://taekwondo.or.id",
                       isShowBar: true,
                     ),
                     route: WebviewPage.routeSettings,
@@ -209,7 +197,7 @@ class ProfileView extends StatelessWidget {
           ),
         ),
         SizedBox(width: 15),
-        SizedBox(width: 89, height: 90, child: Image.asset(AppAssets.email)),
+        SizedBox(width: 89, height: 90, child: Image.asset(AppAssets.logo)),
       ],
     );
 
@@ -227,7 +215,7 @@ class ProfileView extends StatelessWidget {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [information, SizedBox(height: 10), points],
+        children: [information],
       ),
     );
 
@@ -237,19 +225,7 @@ class ProfileView extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(),
-            SizedBox(height: 12),
-            user == null
-                ? Container()
-                : ShareReferral(user: user!, onSharePresseed: () {}),
-            SizedBox(height: 12),
-            Container(),
-            SizedBox(height: 12),
-            header,
-            SizedBox(height: 12),
-            menus,
-          ],
+          children: [header, SizedBox(height: 12), menus],
         ),
       ),
     );

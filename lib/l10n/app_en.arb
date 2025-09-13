@@ -174,5 +174,8 @@
     "children": "Children",
     "reward_history": "Reward History",
     "table_no": "Table No.",
-    "event": "Event and Bazaar"
+    "competition_event": "Competition and Event",
+    "welcome_back": "Hi, Welcome Back",
+    "search_event": "Search Event",
+    "news": "News"
 }

@@ -1,16 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:taekwondo/core/components/app_margin.dart';
+import 'package:taekwondo/core/components/app_search.dart';
+import 'package:taekwondo/core/components/app_text.dart';
 import 'package:taekwondo/core/models/user.dart';
-import 'package:taekwondo/core/services/event-bazaar/models/event_bazaar.dart';
+import 'package:taekwondo/core/services/banner/models/banner.dart';
+import 'package:taekwondo/core/services/event/models/event.dart';
+import 'package:taekwondo/core/services/news/models/news.dart';
+import 'package:taekwondo/core/themes/app_assets.dart';
 import 'package:taekwondo/core/themes/app_colors.dart';
 import 'package:taekwondo/features/home/views/components/event_section.dart';
-import 'package:taekwondo/features/home/views/components/promotion_slider.dart';
+import 'package:taekwondo/features/home/views/components/banner_slider.dart';
+import 'package:taekwondo/features/home/views/components/news_section.dart';
+import 'package:taekwondo/l10n/common/material_localizations.dart';
 
 class HomeView extends StatefulWidget {
-  const HomeView({super.key, required this.user, required this.events});
+  const HomeView({
+    super.key,
+    required this.user,
+    required this.events,
+    required this.news,
+    required this.banners,
+  });
 
   final User user;
-  final List<EventBazaar> events;
+  final List<Event> events;
+  final List<News> news;
+  final List<EventBanner> banners;
 
   @override
   HomeViewState createState() => HomeViewState();
@@ -29,41 +44,63 @@ class HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    Widget headerContent = Column(
+    final nameInformation = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        AppMargin(color: AppColors.primary, child: Container()),
-        SizedBox(height: 23),
-        PromotionSlider(),
-        SizedBox(height: 20),
-        AppMargin(color: Colors.transparent, child: Container()),
+        AppTextCaption(
+          text: L10n.localizations(context).welcome_back,
+          color: Colors.white,
+        ),
+        SizedBox(height: 5),
+        AppTextCaptionSemiBold(text: widget.user.name, color: Colors.white),
       ],
     );
 
-    Widget headerBackground = Container(
-      height: 287,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
-          bottomRight: Radius.circular(12),
-          bottomLeft: Radius.circular(12),
-        ),
-        color: AppColors.primary,
+    final avatar = CircleAvatar(
+      child: SizedBox(
+        width: 58,
+        height: 58,
+        child: Image.asset(AppAssets.logo),
       ),
     );
 
-    Widget header = Stack(children: [headerBackground, headerContent]);
+    Widget userInformation = Row(
+      children: [avatar, SizedBox(width: 12), nameInformation],
+    );
+
+    Widget header = Container(
+      padding: EdgeInsets.symmetric(horizontal: 17, vertical: 8),
+      decoration: BoxDecoration(
+        color: AppColors.primary,
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(12),
+          bottomRight: Radius.circular(12),
+        ),
+      ),
+      child: Column(
+        children: [
+          userInformation,
+          SizedBox(height: 14),
+          AppSearch(hint: L10n.localizations(context).search_event),
+          SizedBox(height: 8),
+        ],
+      ),
+    );
 
     final mainContent = Container(
-      color: AppColors.background,
+      color: Colors.white,
       child: Column(
         children: [
           header,
           SizedBox(height: 20),
-          Container(),
-          SizedBox(height: 28),
-          Container(),
+          AppMargin(child: BannerSlider(banners: widget.banners)),
           SizedBox(height: 28),
           AppMargin(
             child: EventSection(events: widget.events, onPressed: () {}),
+          ),
+          SizedBox(height: 28),
+          AppMargin(
+            child: NewsSection(news: widget.news, onPressed: () {}),
           ),
           SizedBox(height: 120),
         ],
