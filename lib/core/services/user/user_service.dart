@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:taekwondo/core/models/error.dart';
 import 'package:taekwondo/core/models/user.dart';
 import 'package:taekwondo/core/networks/index.dart';
@@ -27,12 +25,10 @@ class UserService implements IUserService {
   Future<User> getMe() async {
     final url = endpoint.getMe();
     final headers = await headerProvider.headers;
-    final response = await httpClient.post(url, headers, json.encode({}));
-    print(response.body);
+    final response = await httpClient.get(url, headers);
     if (response.statusCode != 200) {
       throw AppException(response.body["message"]);
     }
-    print(response.body);
     final body = UserResponse.fromJson(response.body);
     return body.data;
   }

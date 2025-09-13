@@ -1,6 +1,6 @@
 class AppConfiguration {
-  static const host = "103.157.96.125";
-  static const port = 5001;
+  static const host = "taekwondo-api.signals99.com";
+  static const port = 80;
   static const googleApiKey = "AIzaSyDdYp-PeKbVGglk83fQHQ2HYe5V9NqUteI";
   static const isDevelopment = false;
 }

@@ -11,7 +11,7 @@ class RegistrationCubit extends Cubit<RegistrationState> {
 
   final AuthenticationRepository authenticationRepository;
 
-  Future<void> signUp(PhoneRegistrationRequest request) async {
+  Future<void> signUp(EmailRegistrationRequest request) async {
     emit(state.copyWith(status: RegistrationStatus.loading));
     try {
       await authenticationRepository.register(request);

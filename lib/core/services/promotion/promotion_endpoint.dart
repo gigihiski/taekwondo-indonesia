@@ -3,20 +3,18 @@ import 'package:taekwondo/core/utils/networks/url_builder.dart';
 
 class PromotionEndpoint {
   final String baseUrl;
-  final int port;
 
-  PromotionEndpoint(this.baseUrl, this.port);
+  PromotionEndpoint(this.baseUrl);
 
   Uri getPromotions() {
     return createUrl(
       host: baseUrl,
-      port: port,
       path: "/v1/promotions",
       queryParameters: {"type": "promo"},
     );
   }
 
   factory PromotionEndpoint.create() {
-    return PromotionEndpoint(AppConfiguration.host, AppConfiguration.port);
+    return PromotionEndpoint(AppConfiguration.host);
   }
 }

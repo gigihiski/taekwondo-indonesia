@@ -1,97 +1,63 @@
 import 'dart:convert';
 
 import 'package:taekwondo/core/models/meta.dart';
-import 'package:taekwondo/core/services/authentication/models/access_token.dart';
 
-class PhoneAuthenticationRequest {
-  final String phoneNumber;
+class EmailAuthenticationRequest {
+  final String email;
   final String password;
-  String? deviceId;
-  String? type;
-  String? token;
 
-  PhoneAuthenticationRequest({
-    required this.phoneNumber,
-    required this.password,
-    this.deviceId,
-    this.type,
-    this.token,
-  });
+  EmailAuthenticationRequest({required this.email, required this.password});
 
   String toJson() => json.encode(toMap());
 
-  factory PhoneAuthenticationRequest.fromJson(String str) =>
-      PhoneAuthenticationRequest.fromMap(json.decode(str));
+  factory EmailAuthenticationRequest.fromJson(String str) =>
+      EmailAuthenticationRequest.fromMap(json.decode(str));
 
-  factory PhoneAuthenticationRequest.fromMap(Map<String, dynamic> map) =>
-      PhoneAuthenticationRequest(
-        phoneNumber: map["phone_number"],
+  factory EmailAuthenticationRequest.fromMap(Map<String, dynamic> map) =>
+      EmailAuthenticationRequest(
+        email: map["email"],
         password: map["password"],
-        deviceId: map["device_id"],
-        type: map["type"],
-        token: map["token"],
       );
-  Map<String, dynamic> toMap() => {
-    "phone_number": "62$phoneNumber",
-    "password": password,
-    "device_id": deviceId,
-    "type": type,
-    "token": token,
-  };
+  Map<String, dynamic> toMap() => {"email": email, "password": password};
 }
 
-class PhoneAuthenticationResponse {
+class EmailAuthenticationResponse {
   Meta meta;
-  PhoneAuthentication data;
+  EmailAuthentication data;
 
-  PhoneAuthenticationResponse({required this.meta, required this.data});
+  EmailAuthenticationResponse({required this.meta, required this.data});
 
-  factory PhoneAuthenticationResponse.fromJson(String str) =>
-      PhoneAuthenticationResponse.fromMap(json.decode(str));
+  factory EmailAuthenticationResponse.fromJson(String str) =>
+      EmailAuthenticationResponse.fromMap(json.decode(str));
 
-  factory PhoneAuthenticationResponse.fromMap(Map<String, dynamic> json) {
-    return PhoneAuthenticationResponse(
+  factory EmailAuthenticationResponse.fromMap(Map<String, dynamic> json) {
+    return EmailAuthenticationResponse(
       meta: Meta.fromMap(json["meta"]),
-      data: PhoneAuthentication.fromMap(json["data"]),
+      data: EmailAuthentication.fromMap(json["data"]),
     );
   }
 }
 
-class PhoneAuthentication {
-  final String memberCode;
-  final String firstName;
-  final String lastName;
-  final bool isNewPassword;
-  final AccessToken token;
+class EmailAuthentication {
+  final String accessToken;
+  final String tokenType;
 
-  PhoneAuthentication({
-    required this.memberCode,
-    required this.firstName,
-    required this.lastName,
-    required this.isNewPassword,
-    required this.token,
-  });
+  EmailAuthentication({required this.accessToken, required this.tokenType});
 
-  factory PhoneAuthentication.fromJson(String str) =>
-      PhoneAuthentication.fromMap(json.decode(str));
+  factory EmailAuthentication.fromJson(String str) =>
+      EmailAuthentication.fromMap(json.decode(str));
 
-  factory PhoneAuthentication.fromMap(Map<String, dynamic> json) {
-    return PhoneAuthentication(
-      memberCode: json["member_code"],
-      firstName: json["first_name"],
-      lastName: json["last_name"],
-      isNewPassword: json["is_new_password"],
-      token: AccessToken.fromMap(json),
+  factory EmailAuthentication.fromMap(Map<String, dynamic> json) {
+    return EmailAuthentication(
+      accessToken: json["access_token"],
+      tokenType: json["token_type"],
     );
   }
 
   String toJson() => json.encode(toMap());
 
   Map<String, dynamic> toMap() => {
-    "member_code": memberCode,
-    "first_name": firstName,
-    "last_name": lastName,
-    "is_new_password": isNewPassword,
-    "token": token,
+    "access_token": accessToken,
+    "token_type": tokenType,
   };
 }

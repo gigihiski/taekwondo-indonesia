@@ -24,6 +24,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get name => 'Nama';
 
   @override
+  String get email => 'Email';
+
+  @override
   String get logout_confirmation => 'Kamu yakin ingin keluar?';
 
   @override
@@ -60,13 +63,13 @@ class AppLocalizationsId extends AppLocalizations {
   String get registration_failed => 'Pendaftaran Gagal';
 
   @override
-  String get registration_success_message => 'Terima kasih telah menjadi bagian dari Kampoeng Steak!';
+  String get registration_success_message => 'Terima kasih telah menjadi bagian dari Taekwondo Indonesia!';
 
   @override
   String get acceptance_terms_conditions_agreement => 'Ketentuan layanan dan kebijakan privasi harus disetujui';
 
   @override
-  String get registration_agreement_checkbox => 'Saya menyetujui ketentuan layanan dan kebijakan privasi Kampoeng Steak.';
+  String get registration_agreement_checkbox => 'Saya menyetujui ketentuan layanan dan kebijakan privasi Taekwondo Indonesia.';
 
   @override
   String get other_registration_option => 'atau daftar dengan';

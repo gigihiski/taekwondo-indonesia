@@ -88,7 +88,7 @@ class AppCheckboxState extends State<AppCheckbox> {
           )
         : checked
         ? widget.checkbox?.checked ??
-              Icon(Icons.check_circle_outline_outlined, color: widget.color)
+              Icon(Icons.check_box_rounded, color: widget.color)
         : widget.checkbox?.unChecked ??
               Icon(Icons.check_box_outline_blank, color: widget.color);
 

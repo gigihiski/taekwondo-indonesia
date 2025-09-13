@@ -28,10 +28,10 @@ class LoginCubit extends Cubit<LoginState> {
     }
   }
 
-  Future<void> login(PhoneAuthenticationRequest request) async {
+  Future<void> login(EmailAuthenticationRequest request) async {
     emit(state.copyWith(status: LoginStatus.loading));
     try {
-      await authenticationRepository.authenticatePhone(request);
+      await authenticationRepository.authenticateEmail(request);
       emit(state.copyWith(status: LoginStatus.success));
     } on AppException catch (e) {
       emit(

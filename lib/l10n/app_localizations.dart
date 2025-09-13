@@ -125,6 +125,12 @@ abstract class AppLocalizations {
   /// **'Name'**
   String get name;
 
+  /// No description provided for @email.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get email;
+
   /// No description provided for @logout_confirmation.
   ///
   /// In en, this message translates to:
@@ -200,7 +206,7 @@ abstract class AppLocalizations {
   /// No description provided for @registration_success_message.
   ///
   /// In en, this message translates to:
-  /// **'Thank you for joining Kampoeng Steak!'**
+  /// **'Thank you for joining Taekwondo Indonesia!'**
   String get registration_success_message;
 
   /// No description provided for @acceptance_terms_conditions_agreement.
@@ -212,7 +218,7 @@ abstract class AppLocalizations {
   /// No description provided for @registration_agreement_checkbox.
   ///
   /// In en, this message translates to:
-  /// **'I agree to Kampoeng Steak\'s terms of service and privacy policy.'**
+  /// **'I agree to Taekwondo Indonesia\'s terms of service and privacy policy.'**
   String get registration_agreement_checkbox;
 
   /// No description provided for @other_registration_option.

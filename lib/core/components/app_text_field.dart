@@ -113,7 +113,7 @@ class AppTextFieldState extends State<AppTextField> {
         ),
         SizedBox(height: 2),
         if (validationError != null)
-          AppTextMicro(text: validationError, color: Colors.red),
+          AppTextMicro(text: validationError, color: Colors.black),
       ],
     );
 
