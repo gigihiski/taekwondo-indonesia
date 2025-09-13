@@ -174,5 +174,8 @@
     "children": "Anak-anak",
     "reward_history": "Riwayat Reward",
     "table_no": "Nomor Meja",
-    "event": "Event dan Bazar"
+    "competition_event": "Kompetisi dan Event",
+    "welcome_back": "Hi, Selamat Datang",
+    "search_event": "Cari Event",
+    "news": "Berita"
 }

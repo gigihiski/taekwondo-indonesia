@@ -534,5 +534,14 @@ class AppLocalizationsId extends AppLocalizations {
   String get table_no => 'Nomor Meja';
 
   @override
-  String get event => 'Event dan Bazar';
+  String get competition_event => 'Kompetisi dan Event';
+
+  @override
+  String get welcome_back => 'Hi, Selamat Datang';
+
+  @override
+  String get search_event => 'Cari Event';
+
+  @override
+  String get news => 'Berita';
 }

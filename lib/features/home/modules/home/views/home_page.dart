@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:taekwondo/core/components/app_bar.dart';
-import 'package:taekwondo/core/services/event-bazaar/event_bazaar_repository.dart';
+import 'package:taekwondo/core/services/banner/banner_repository.dart';
+import 'package:taekwondo/core/services/event/event_repository.dart';
+import 'package:taekwondo/core/services/news/news_repository.dart';
 import 'package:taekwondo/core/services/storages/profile_storage.dart';
-import 'package:taekwondo/core/themes/app_colors.dart';
 import 'package:taekwondo/features/home/modules/home/logics/home_cubit.dart';
 import 'package:taekwondo/features/home/modules/home/views/home_view.dart';
 import 'package:taekwondo/features/home/views/components/home_navigation.dart';
@@ -35,9 +36,12 @@ class HomePageState extends State<HomePage> {
 
   BlocProvider homeBlocProvider() {
     return BlocProvider<HomeCubit>(
-      create: (context) =>
-          HomeCubit(ProfileStorage.create(), EventBazaarRepository.create())
-            ..init(),
+      create: (context) => HomeCubit(
+        profileStorage: ProfileStorage.create(),
+        eventRepository: EventRepository.create(),
+        newsRepository: NewsRepository.create(),
+        bannerRepository: BannerRepository.create(),
+      )..init(),
     );
   }
 
@@ -63,7 +67,12 @@ class HomePageState extends State<HomePage> {
         case HomeStatus.error:
           return Container();
         case HomeStatus.loaded:
-          return HomeView(user: state.user!, events: state.events);
+          return HomeView(
+            user: state.user!,
+            events: state.events,
+            news: state.news,
+            banners: state.banners,
+          );
         case HomeStatus.unAuthenticated:
           throw UnimplementedError();
       }
@@ -77,8 +86,6 @@ class HomePageState extends State<HomePage> {
       case 2:
         return Container();
       case 3:
-        return Container();
-      case 4:
         return ProfilePage();
       default:
         return BlocBuilder<HomeCubit, HomeState>(builder: homeBlocBuilder());
@@ -97,7 +104,7 @@ class HomePageState extends State<HomePage> {
           appBar: appBar,
           body: showPage(currentIndex),
           extendBody: true,
-          backgroundColor: AppColors.primary,
+          backgroundColor: Colors.white,
           bottomNavigationBar: BlocBuilder<HomeCubit, HomeState>(
             builder: (context, state) {
               return DashboardBottomNavigationBar(

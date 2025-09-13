@@ -534,5 +534,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get table_no => 'Table No.';
 
   @override
-  String get event => 'Event and Bazaar';
+  String get competition_event => 'Competition and Event';
+
+  @override
+  String get welcome_back => 'Hi, Welcome Back';
+
+  @override
+  String get search_event => 'Search Event';
+
+  @override
+  String get news => 'News';
 }

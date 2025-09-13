@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:taekwondo/core/themes/app_assets.dart';
+import 'package:taekwondo/core/themes/app_colors.dart';
 import 'package:taekwondo/features/home/views/components/navigation_item.dart';
 
 class DashboardBottomNavigationBar extends StatelessWidget {
@@ -20,35 +21,28 @@ class DashboardBottomNavigationBar extends StatelessWidget {
           onTap(0);
         },
         active: currentIndex == 0,
-        svgSource: AppAssets.email,
+        svgSource: AppAssets.home,
       ),
       NavigationItem(
         callback: () {
           onTap(1);
         },
         active: currentIndex == 1,
-        svgSource: AppAssets.email,
+        svgSource: AppAssets.notification,
       ),
       NavigationItem(
         callback: () {
           onTap(2);
         },
         active: currentIndex == 2,
-        svgSource: AppAssets.email,
+        svgSource: AppAssets.history,
       ),
       NavigationItem(
         callback: () {
           onTap(3);
         },
         active: currentIndex == 3,
-        svgSource: AppAssets.email,
-      ),
-      NavigationItem(
-        callback: () {
-          onTap(4);
-        },
-        active: currentIndex == 4,
-        svgSource: AppAssets.email,
+        svgSource: AppAssets.user,
       ),
     ];
 
@@ -58,7 +52,7 @@ class DashboardBottomNavigationBar extends StatelessWidget {
         topRight: Radius.circular(12),
       ),
       child: BottomAppBar(
-        color: Colors.white,
+        color: AppColors.background,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,

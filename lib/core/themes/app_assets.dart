@@ -15,6 +15,7 @@ class AppAssets {
   static const String apple = 'assets/images/apple.png';
 
   static const String placeholder = 'assets/images/placeholder.png';
+  static const String banner = 'assets/images/banner.png';
 
   static const String ukFlag = 'assets/images/uk_flag.svg';
   static const String idFlag = 'assets/images/id_flag.svg';
@@ -24,13 +25,17 @@ class AppAssets {
   static const String email = 'assets/images/email.svg';
   static const String phone = 'assets/images/phone.svg';
 
+  static const String home = 'assets/images/home.svg';
+  static const String notification = 'assets/images/notification.svg';
+  static const String history = 'assets/images/history.svg';
+  static const String user = 'assets/images/user.svg';
+
   static const String share = 'assets/images/share.svg';
 
   static const String location = 'assets/images/location.svg';
   static const String paymentMethod = 'assets/images/payment_method.svg';
   static const String help = 'assets/images/help.svg';
   static const String language = 'assets/images/language.svg';
-  static const String notification = 'assets/images/notification.svg';
   static const String privacyPolicy = 'assets/images/privacy_policy.svg';
   static const String termsConditions = 'assets/images/terms.svg';
   static const String about = 'assets/images/about.svg';

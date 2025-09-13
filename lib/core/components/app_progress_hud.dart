@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:taekwondo/core/themes/app_assets.dart';
 
 class AppProgressHUD extends StatefulWidget {

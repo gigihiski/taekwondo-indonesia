@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:taekwondo/core/components/app_header.dart';
-import 'package:taekwondo/core/services/event-bazaar/models/event_bazaar.dart';
+import 'package:taekwondo/core/services/event/models/event.dart';
 import 'package:taekwondo/core/themes/app_assets.dart';
+import 'package:taekwondo/features/home/views/components/event_item.dart';
 import 'package:taekwondo/l10n/common/material_localizations.dart';
 
 class EventSection extends StatelessWidget {
@@ -11,13 +12,13 @@ class EventSection extends StatelessWidget {
     required this.onPressed,
   });
 
-  final List<EventBazaar> events;
+  final List<Event> events;
   final Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
     final header = AppHeaderTitleIconLink(
-      text: L10n.localizations(context).event,
+      text: L10n.localizations(context).competition_event,
       appHeaderIcon: AppHeaderIcon(icon: AppAssets.email),
       appHeaderLink: AppHeaderLink(
         text: L10n.localizations(context).view_all,
@@ -25,20 +26,16 @@ class EventSection extends StatelessWidget {
       ),
     );
 
-    final content = GridView.builder(
-      padding: EdgeInsets.zero,
-      physics: NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 1,
-        mainAxisSpacing: 10,
-        crossAxisSpacing: 10,
-        childAspectRatio: 1.15,
+    final content = SizedBox(
+      height: 280,
+      child: ListView.separated(
+        padding: EdgeInsets.zero,
+        shrinkWrap: true,
+        scrollDirection: Axis.horizontal,
+        itemCount: events.length,
+        itemBuilder: (context, index) => EventItem(event: events[index]),
+        separatorBuilder: (context, index) => SizedBox(width: 10),
       ),
-      itemCount: events.length,
-      itemBuilder: (context, index) {
-        return Container();
-      },
     );
 
     return Column(children: [header, SizedBox(height: 19), content]);

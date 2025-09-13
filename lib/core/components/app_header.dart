@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:taekwondo/core/components/app_text.dart';
 import 'package:taekwondo/core/themes/app_colors.dart';
-import 'package:taekwondo/features/home/views/components/flash_sale_count_down_timer.dart';
 
 class AppHeaderIcon {
   AppHeaderIcon({
@@ -95,67 +94,6 @@ class AppHeaderTitleBadge extends AppHeader {
 
   final String text;
   final AppHeaderBadge appHeaderBadge;
-}
-
-class AppHeaderCountDownAction {
-  final String text;
-  final int seconds;
-  final Function() onTimerEnded;
-
-  AppHeaderCountDownAction({
-    required this.text,
-    required this.seconds,
-    required this.onTimerEnded,
-  });
-
-  Widget get build {
-    final expiring = Container(
-      padding: EdgeInsets.symmetric(vertical: 2, horizontal: 10),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.grey),
-      ),
-      child: Center(
-        child: FlashSaleCountDownTimer(
-          seconds: seconds,
-          onTimerEnded: onTimerEnded,
-        ),
-      ),
-    );
-
-    return Column(
-      children: [
-        AppTextMicro(text: text, color: AppColors.graniteGray),
-        SizedBox(height: 4),
-        expiring,
-      ],
-    );
-  }
-}
-
-class AppHeaderTimer extends AppHeader {
-  AppHeaderTimer({
-    super.key,
-    required this.text,
-    required this.description,
-    required this.appHeaderIcon,
-    required this.appHeaderCountDownAction,
-  }) : super(
-         content: Column(
-           crossAxisAlignment: CrossAxisAlignment.start,
-           children: [
-             AppTextH4SourGummySemiBold(text: text),
-             AppTextCaption(text: description, color: AppColors.graniteGray),
-           ],
-         ),
-         leading: appHeaderIcon.build,
-         action: appHeaderCountDownAction.build,
-       );
-
-  final String text;
-  final String description;
-  final AppHeaderIcon appHeaderIcon;
-  final AppHeaderCountDownAction appHeaderCountDownAction;
 }
 
 class AppHeaderTitleIconLink extends AppHeader {
