@@ -2,53 +2,37 @@ import 'dart:convert';
 
 import 'package:taekwondo/core/services/authentication/models/access_token.dart';
 
-class PhoneRegistrationRequest {
-  final String firstName;
-  final String lastName;
+class EmailRegistrationRequest {
+  final String name;
+  final String email;
   final String phoneNumber;
   final String password;
-  String? email;
-  String? deviceId;
-  String? type;
-  String? token;
 
-  PhoneRegistrationRequest({
-    required this.firstName,
-    required this.lastName,
+  EmailRegistrationRequest({
+    required this.name,
+    required this.email,
     required this.phoneNumber,
     required this.password,
-    this.email,
-    this.deviceId,
-    this.type,
-    this.token,
   });
 
   String toJson() => json.encode(toMap());
 
-  factory PhoneRegistrationRequest.fromJson(String str) =>
-      PhoneRegistrationRequest.fromMap(json.decode(str));
+  factory EmailRegistrationRequest.fromJson(String str) =>
+      EmailRegistrationRequest.fromMap(json.decode(str));
 
-  factory PhoneRegistrationRequest.fromMap(Map<String, dynamic> map) =>
-      PhoneRegistrationRequest(
-        firstName: map["first_name"],
-        lastName: map["last_name"],
+  factory EmailRegistrationRequest.fromMap(Map<String, dynamic> map) =>
+      EmailRegistrationRequest(
+        name: map["name"],
+        email: map["email"],
         phoneNumber: map["phone_number"],
         password: map["password"],
-        email: map["email"],
-        deviceId: map["device_id"] ?? "",
-        type: map["type"],
-        token: map["token"],
       );
 
   Map<String, dynamic> toMap() => {
-    "first_name": firstName,
-    "last_name": lastName,
-    "phone_number": "62$phoneNumber",
-    "password": password,
+    "name": name,
     "email": email,
-    "device_id": deviceId ?? "",
-    "type": type,
-    "token": token,
+    "phone_number": phoneNumber,
+    "password": password,
   };
 }
 

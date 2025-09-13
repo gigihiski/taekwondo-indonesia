@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:taekwondo/core/themes/app_assets.dart';
 import 'package:lottie/lottie.dart';
+import 'package:taekwondo/core/themes/app_assets.dart';
 
 class AppProgressHUD extends StatefulWidget {
   final Widget child;
@@ -60,7 +60,6 @@ class AppProgressHUDState extends State<AppProgressHUD>
 
   late AnimationController controller;
   late Animation animation;
-  late LottieBuilder logoAnimation;
 
   void show() {
     if (mounted) {
@@ -93,12 +92,6 @@ class AppProgressHUDState extends State<AppProgressHUD>
 
   @override
   void initState() {
-    logoAnimation = Lottie.asset(
-      AppAssets.splashAnimation,
-      animate: true,
-      repeat: true,
-      width: 240,
-    );
     controller = AnimationController(
       vsync: this,
       duration: Duration(milliseconds: 300),
@@ -180,6 +173,10 @@ class AppProgressHUDState extends State<AppProgressHUD>
   }
 
   Widget buildDefaultIndicator() {
-    return SizedBox(width: 175.0, height: 175.0, child: logoAnimation);
+    return SizedBox(
+      width: 175.0,
+      height: 175.0,
+      child: Image.asset(AppAssets.logo, width: 120),
+    );
   }
 }

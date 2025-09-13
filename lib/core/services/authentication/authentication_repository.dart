@@ -15,8 +15,8 @@ import 'package:taekwondo/core/utils/device_information.dart';
 import 'package:taekwondo/core/utils/exceptions/app_exception.dart';
 
 abstract class IAuthenticationRepository {
-  Future<AccessToken> register(PhoneRegistrationRequest request);
-  Future<AccessToken> authenticatePhone(PhoneAuthenticationRequest request);
+  Future<String> register(EmailRegistrationRequest request);
+  Future<String> authenticateEmail(EmailAuthenticationRequest request);
 
   Future<AccessToken> registerGoogleAccount(
     GoogleAccountRegistrationRequest request,
@@ -47,32 +47,28 @@ class AuthenticationRepository implements IAuthenticationRepository {
   );
 
   @override
-  Future<AccessToken> register(PhoneRegistrationRequest request) async {
-    request.deviceId = await getDeviceId();
+  Future<String> register(EmailRegistrationRequest request) async {
     await authenticationService.register(request);
-    final loginRequest = PhoneAuthenticationRequest(
-      phoneNumber: request.phoneNumber,
+    final loginRequest = EmailAuthenticationRequest(
+      email: request.email,
       password: request.password,
-      deviceId: request.deviceId,
     );
-    final loginResponse = await authenticationService.authenticatePhone(
+    final loginResponse = await authenticationService.authenticateEmail(
       loginRequest,
     );
-    await tokenStorage.saveToken(loginResponse.token.token);
+    await tokenStorage.saveToken(loginResponse.accessToken);
     final user = await userService.getMe();
     await profileStorage.saveProfile(user);
-    return loginResponse.token;
+    return loginResponse.accessToken;
   }
 
   @override
-  Future<AccessToken> authenticatePhone(
-    PhoneAuthenticationRequest request,
-  ) async {
-    final response = await authenticationService.authenticatePhone(request);
-    await tokenStorage.saveToken(response.token.token);
+  Future<String> authenticateEmail(EmailAuthenticationRequest request) async {
+    final response = await authenticationService.authenticateEmail(request);
+    await tokenStorage.saveToken(response.accessToken);
     final user = await userService.getMe();
     await profileStorage.saveProfile(user);
-    return response.token;
+    return response.accessToken;
   }
 
   @override

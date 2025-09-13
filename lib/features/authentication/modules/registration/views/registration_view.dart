@@ -11,7 +11,6 @@ import 'package:taekwondo/core/components/app_text_field.dart';
 import 'package:taekwondo/core/services/authentication/models/phone_registration.dart';
 import 'package:taekwondo/core/themes/app_assets.dart';
 import 'package:taekwondo/core/themes/app_colors.dart';
-import 'package:taekwondo/core/utils/extensions/name.dart';
 import 'package:taekwondo/features/authentication/modules/registration/logics/google_registration_cubit.dart';
 import 'package:taekwondo/features/authentication/modules/registration/logics/registration_cubit.dart';
 import 'package:taekwondo/features/authentication/views/authentication_divider.dart';
@@ -25,9 +24,11 @@ class RegistrationView extends StatefulWidget {
 }
 
 class RegistrationViewState extends State<RegistrationView> {
+  bool isSecure = true;
   final form = GlobalKey<FormState>();
-  TextEditingController phoneController = TextEditingController();
   TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   late bool isChecked;
 
@@ -46,16 +47,7 @@ class RegistrationViewState extends State<RegistrationView> {
   Widget build(BuildContext context) {
     final header = AppTextH3SourGummySemiBold(
       text: L10n.localizations(context).registration,
-      color: Colors.white,
-    );
-
-    final phoneCodePrefix = Container(
-      margin: EdgeInsets.only(left: 20, right: 1),
-      width: 26,
-      child: Align(
-        alignment: Alignment.center,
-        child: AppTextParagraph(text: "+62", color: AppColors.graniteGray),
-      ),
+      color: Colors.black,
     );
 
     final socialButton = Row(
@@ -101,36 +93,12 @@ class RegistrationViewState extends State<RegistrationView> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          AppTextParagraph(
-            text: L10n.localizations(context).whatsapp_login_instruction,
-            color: Colors.white,
-          ),
-          SizedBox(height: 11),
           AppTextField(
-            prefix: phoneCodePrefix,
-            controller: phoneController,
-            validator: (value) {
-              final validator = Validator(
-                validators: [RequiredValidator(), PhoneNumberValidator()],
-              );
-
-              return validator.validate(
-                label: L10n.localizations(context).phone_number,
-                value: value,
-              );
-            },
-          ),
-          SizedBox(height: 12),
-          AppTextParagraph(
-            text: L10n.localizations(context).name_registration_instruction,
-            color: Colors.white,
-          ),
-          SizedBox(height: 11),
-          AppTextField(
+            hint: L10n.localizations(context).name,
+            prefix: Icon(Icons.person_outline_sharp, size: 24),
             controller: nameController,
             validator: (value) {
               final validator = Validator(validators: [RequiredValidator()]);
-
               return validator.validate(
                 label: L10n.localizations(context).name,
                 value: value,
@@ -138,17 +106,50 @@ class RegistrationViewState extends State<RegistrationView> {
             },
           ),
           SizedBox(height: 12),
-          AppTextParagraph(
-            text: L10n.localizations(context).password_login_instruction,
-            color: Colors.white,
-          ),
-          SizedBox(height: 11),
           AppTextField(
+            hint: L10n.localizations(context).phone_number,
+            prefix: Icon(Icons.phone_outlined, size: 24),
+            controller: phoneController,
+            validator: (value) {
+              final validator = Validator(
+                validators: [RequiredValidator(), PhoneNumberValidator()],
+              );
+              return validator.validate(
+                label: L10n.localizations(context).phone_number,
+                value: value,
+              );
+            },
+          ),
+          SizedBox(height: 12),
+          AppTextField(
+            hint: L10n.localizations(context).email,
+            prefix: Icon(Icons.email_outlined, size: 24),
+            controller: emailController,
+            validator: (value) {
+              final validator = Validator(
+                validators: [RequiredValidator(), EmailValidator()],
+              );
+
+              return validator.validate(
+                label: L10n.localizations(context).email,
+                value: value,
+              );
+            },
+          ),
+          SizedBox(height: 12),
+          AppTextField(
+            hint: L10n.localizations(context).password,
+            suffix: isSecure
+                ? Icon(Icons.remove_red_eye_outlined, size: 24)
+                : Icon(Icons.remove_red_eye, size: 24),
+            isSecure: isSecure,
+            prefix: Icon(Icons.lock_outlined, size: 24),
             controller: passwordController,
-            isSecure: true,
+            suffixOnPressed: () {
+              setState(() => isSecure = !isSecure);
+            },
             validator: (value) {
               final validator = Validator(validators: [RequiredValidator()]);
-
               return validator.validate(
                 label: L10n.localizations(context).password,
                 value: value,
@@ -169,12 +170,10 @@ class RegistrationViewState extends State<RegistrationView> {
                     onBackButtonPressed: () {},
                   ).openAnimatedDialog(context);
                 } else {
-                  final name = nameController.text.splitFullName();
-
-                  final PhoneRegistrationRequest request =
-                      PhoneRegistrationRequest(
-                        firstName: name.firstName,
-                        lastName: name.lastName,
+                  final EmailRegistrationRequest request =
+                      EmailRegistrationRequest(
+                        email: nameController.text,
+                        name: emailController.text,
                         phoneNumber: phoneController.text,
                         password: passwordController.text,
                       );
@@ -192,18 +191,19 @@ class RegistrationViewState extends State<RegistrationView> {
             },
             child: AppTextParagraph(
               text: L10n.localizations(context).registration_agreement_checkbox,
-              color: Colors.white,
+              color: Colors.black,
             ),
           ),
           SizedBox(height: 28),
           AuthenticationDivider(
             text: L10n.localizations(context).other_registration_option,
-            color: AppColors.royalBlue,
+            color: Colors.black,
           ),
-          SizedBox(height: 28),
+          SizedBox(height: 20),
           socialButton,
-          SizedBox(height: 40),
+          SizedBox(height: 20),
           footer,
+          SizedBox(height: 20),
         ],
       ),
     );

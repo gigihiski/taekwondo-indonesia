@@ -7,20 +7,18 @@ abstract class IPaymentMethodEndpoint {
 
 class PaymentMethodEndpoint implements IPaymentMethodEndpoint {
   final String baseUrl;
-  final int port;
 
-  PaymentMethodEndpoint(this.baseUrl, this.port);
+  PaymentMethodEndpoint(this.baseUrl);
 
   @override
   Uri getPaymentMethods(String branchCode) {
     return createUrl(
       host: baseUrl,
-      port: port,
       path: '/v1/payment-methods',
       queryParameters: {'branch_code': branchCode},
     );
   }
 
   factory PaymentMethodEndpoint.create() =>
-      PaymentMethodEndpoint(AppConfiguration.host, AppConfiguration.port);
+      PaymentMethodEndpoint(AppConfiguration.host);
 }

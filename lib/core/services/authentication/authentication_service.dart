@@ -15,9 +15,9 @@ import 'package:taekwondo/core/utils/exceptions/app_exception.dart';
 import 'package:taekwondo/core/utils/exceptions/meta_exception.dart';
 
 abstract class IAuthenticationService {
-  Future<void> register(PhoneRegistrationRequest request);
-  Future<PhoneAuthentication> authenticatePhone(
-    PhoneAuthenticationRequest request,
+  Future<void> register(EmailRegistrationRequest request);
+  Future<EmailAuthentication> authenticateEmail(
+    EmailAuthenticationRequest request,
   );
 
   Future<GoogleAccountRegistration> registerGoogleAccount(
@@ -39,7 +39,7 @@ class AuthenticationService implements IAuthenticationService {
   AuthenticationService(this.httpClient, this.headerProvider, this.endpoint);
 
   @override
-  Future<void> register(PhoneRegistrationRequest request) async {
+  Future<void> register(EmailRegistrationRequest request) async {
     final url = endpoint.registration();
     final headers = await headerProvider.emptyHeaders;
     final response = await httpClient.post(url, headers, request.toJson());
@@ -50,17 +50,19 @@ class AuthenticationService implements IAuthenticationService {
   }
 
   @override
-  Future<PhoneAuthentication> authenticatePhone(
-    PhoneAuthenticationRequest request,
+  Future<EmailAuthentication> authenticateEmail(
+    EmailAuthenticationRequest request,
   ) async {
-    final url = endpoint.phoneAuthentication();
+    final url = endpoint.emailAuthentication();
+    print(url);
     final headers = await headerProvider.emptyHeaders;
     final response = await httpClient.post(url, headers, request.toJson());
+    print(response.body);
     if (response.statusCode != 200) {
       final error = ErrorResponse.fromJson(response.body);
       throw AppException(error.errors.first);
     }
-    final body = PhoneAuthenticationResponse.fromJson(response.body);
+    final body = EmailAuthenticationResponse.fromJson(response.body);
     return body.data;
   }
 

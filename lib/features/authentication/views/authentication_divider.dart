@@ -21,7 +21,7 @@ class AuthenticationDivider extends StatelessWidget {
         divider,
         Container(
           padding: EdgeInsets.symmetric(horizontal: 12),
-          child: AppTextCaption(text: text, color: Colors.white),
+          child: AppTextCaption(text: text, color: Colors.black),
         ),
         divider,
       ],

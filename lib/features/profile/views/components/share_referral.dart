@@ -42,10 +42,7 @@ class ShareReferral extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          AppTextH3SourGummySemiBold(
-            text: user.referralCode,
-            color: Colors.black,
-          ),
+          AppTextH3SourGummySemiBold(text: user.email, color: Colors.black),
           shareIcon,
         ],
       ),

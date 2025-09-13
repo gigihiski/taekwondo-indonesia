@@ -25,7 +25,7 @@ class LoginView extends StatefulWidget {
 class LoginViewState extends State<LoginView> {
   bool isSecure = true;
   final form = GlobalKey<FormState>();
-  TextEditingController phoneController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   @override
@@ -43,15 +43,6 @@ class LoginViewState extends State<LoginView> {
     final header = AppTextH3SourGummySemiBold(
       text: L10n.localizations(context).login,
       color: Colors.white,
-    );
-
-    final phoneCodePrefix = Container(
-      margin: EdgeInsets.only(left: 20, right: 5),
-      width: 26,
-      child: Align(
-        alignment: Alignment.center,
-        child: AppTextParagraph(text: "+62", color: AppColors.graniteGray),
-      ),
     );
 
     final socialButton = Row(
@@ -105,17 +96,16 @@ class LoginViewState extends State<LoginView> {
         children: [
           AppTextParagraph(
             text: L10n.localizations(context).whatsapp_login_instruction,
-            color: Colors.white,
+            color: Colors.black,
           ),
           SizedBox(height: 11),
           AppTextField(
-            prefix: phoneCodePrefix,
-            controller: phoneController,
+            prefix: Icon(Icons.email_outlined, size: 24),
+            controller: usernameController,
             validator: (value) {
               final validator = Validator(
-                validators: [RequiredValidator(), PhoneNumberValidator()],
+                validators: [RequiredValidator(), EmailValidator()],
               );
-
               return validator.validate(
                 label: L10n.localizations(context).phone_number,
                 value: value,
@@ -125,21 +115,21 @@ class LoginViewState extends State<LoginView> {
           SizedBox(height: 12),
           AppTextParagraph(
             text: L10n.localizations(context).password_login_instruction,
-            color: Colors.white,
+            color: Colors.black,
           ),
           SizedBox(height: 11),
           AppTextField(
             controller: passwordController,
+            prefix: Icon(Icons.lock_outlined, size: 24),
             suffix: isSecure
-                ? Icon(Icons.lock_outlined, size: 24)
-                : Icon(Icons.lock_open_outlined, size: 24),
+                ? Icon(Icons.remove_red_eye_outlined, size: 24)
+                : Icon(Icons.remove_red_eye, size: 24),
             isSecure: isSecure,
             suffixOnPressed: () {
               setState(() => isSecure = !isSecure);
             },
             validator: (value) {
               final validator = Validator(validators: [RequiredValidator()]);
-
               return validator.validate(
                 label: L10n.localizations(context).password,
                 value: value,
@@ -151,9 +141,9 @@ class LoginViewState extends State<LoginView> {
             title: L10n.localizations(context).proceed,
             onPressed: () async {
               if (form.currentState!.validate()) {
-                final PhoneAuthenticationRequest request =
-                    PhoneAuthenticationRequest(
-                      phoneNumber: phoneController.text,
+                final EmailAuthenticationRequest request =
+                    EmailAuthenticationRequest(
+                      email: usernameController.text,
                       password: passwordController.text,
                     );
                 context.read<LoginCubit>().login(request);
@@ -163,11 +153,11 @@ class LoginViewState extends State<LoginView> {
           SizedBox(height: 28),
           AuthenticationDivider(
             text: L10n.localizations(context).other_login_option,
-            color: AppColors.royalBlue,
+            color: Colors.black,
           ),
-          SizedBox(height: 28),
+          SizedBox(height: 20),
           socialButton,
-          SizedBox(height: 40),
+          SizedBox(height: 20),
           footer,
         ],
       ),

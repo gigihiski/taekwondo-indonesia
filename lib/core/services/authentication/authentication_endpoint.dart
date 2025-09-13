@@ -3,7 +3,7 @@ import 'package:taekwondo/core/utils/networks/url_builder.dart';
 
 abstract class IAuthenticationEndpoint {
   Uri registration();
-  Uri phoneAuthentication();
+  Uri emailAuthentication();
   Uri googleAuthentication();
   Uri appleAuthentication();
   Uri phoneValidation();
@@ -13,35 +13,33 @@ abstract class IAuthenticationEndpoint {
 
 class AuthenticationEndpoint implements IAuthenticationEndpoint {
   final String baseUrl;
-  final int port;
 
-  AuthenticationEndpoint(this.baseUrl, this.port);
+  AuthenticationEndpoint(this.baseUrl);
 
   @override
   Uri registration() {
-    return createUrl(host: baseUrl, port: port, path: '/v1/auth/register');
+    return createUrl(host: baseUrl, path: '/api/v1/signup');
   }
 
   @override
-  Uri phoneAuthentication() {
-    return createUrl(host: baseUrl, port: port, path: '/v1/auth/login');
+  Uri emailAuthentication() {
+    return createUrl(host: baseUrl, path: '/api/v1/signin');
   }
 
   @override
   Uri googleAuthentication() {
-    return createUrl(host: baseUrl, port: port, path: '/v1/auth/register');
+    return createUrl(host: baseUrl, path: '/v1/auth/register');
   }
 
   @override
   Uri appleAuthentication() {
-    return createUrl(host: baseUrl, port: port, path: '/v1/auth/login');
+    return createUrl(host: baseUrl, path: '/v1/auth/login');
   }
 
   @override
   Uri phoneValidation() {
     return createUrl(
       host: baseUrl,
-      port: port,
       path: "/v1/auth/forgot-password/request-otp",
     );
   }
@@ -50,20 +48,15 @@ class AuthenticationEndpoint implements IAuthenticationEndpoint {
   Uri otpRequest() {
     return createUrl(
       host: baseUrl,
-      port: port,
       path: "/v1/auth/forgot-password/request-otp",
     );
   }
 
   @override
   Uri forgotPasswordConfirmation() {
-    return createUrl(
-      host: baseUrl,
-      port: port,
-      path: "/v1/auth/forgot-password",
-    );
+    return createUrl(host: baseUrl, path: "/v1/auth/forgot-password");
   }
 
   factory AuthenticationEndpoint.create() =>
-      AuthenticationEndpoint(AppConfiguration.host, AppConfiguration.port);
+      AuthenticationEndpoint(AppConfiguration.host);
 }

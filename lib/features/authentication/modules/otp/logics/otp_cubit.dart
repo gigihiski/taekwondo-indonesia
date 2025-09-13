@@ -10,10 +10,10 @@ class OTPCubit extends Cubit<OTPState> {
 
   final AuthenticationRepository authenticationRepository;
 
-  Future<void> login(PhoneAuthenticationRequest request) async {
+  Future<void> login(EmailAuthenticationRequest request) async {
     emit(state.copyWith(status: OTPStatus.loading));
     try {
-      await authenticationRepository.authenticatePhone(request);
+      await authenticationRepository.authenticateEmail(request);
       emit(state.copyWith(status: OTPStatus.success));
     } on TokenExpired {
       // await repository.setTokenExpired();
