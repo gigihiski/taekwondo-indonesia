@@ -10,8 +10,6 @@ import 'package:taekwondo/core/themes/app_colors.dart';
 import 'package:taekwondo/features/profile/models/profile_menu.dart';
 import 'package:taekwondo/features/profile/modules/language/views/language_page.dart';
 import 'package:taekwondo/features/profile/modules/profile/logics/profile_cubit.dart';
-import 'package:taekwondo/features/profile/modules/profile/views/components/point_circle.dart';
-import 'package:taekwondo/features/profile/views/components/share_referral.dart';
 import 'package:taekwondo/features/webview/views/webview_page.dart';
 import 'package:taekwondo/l10n/common/material_localizations.dart';
 
@@ -153,26 +151,6 @@ class ProfileView extends StatelessWidget {
         },
         separatorBuilder: (context, index) =>
             Divider(height: 0.5, color: AppColors.platinum),
-      ),
-    );
-
-    final points = Container(
-      alignment: Alignment.center,
-      height: 54,
-      child: ListView.separated(
-        physics: NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        itemCount: 5,
-        itemBuilder: (context, index) {
-          return PointCircle(point: ((index + 1) * 25));
-        },
-        separatorBuilder: (BuildContext context, int index) {
-          return SizedBox(
-            width: 10,
-            child: Divider(thickness: 2, color: AppColors.secondary),
-          );
-        },
       ),
     );
 
