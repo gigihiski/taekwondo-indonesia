@@ -149,7 +149,7 @@ class AppConfirmation extends StatelessWidget {
             insetPadding: EdgeInsets.only(left: 16, right: 16),
             backgroundColor: Colors.transparent,
             child: SizedBox(
-              height: 364,
+              height: 400,
               width: double.infinity,
               child: AppConfirmation(
                 title: title,

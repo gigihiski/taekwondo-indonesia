@@ -108,7 +108,7 @@
     "notification_setting": "Pengaturan Notifikasi",
     "privacy_policy": "Kebijakan Privasi",
     "terms_conditions": "Ketentuan Layanan",
-    "about_us": "Tentang Kampoeng Steak",
+    "about_us": "Tentang Takewondo Indonesia",
     "logout": "Keluar",
     "daily_quest": "Daily Quest",
     "daily_quest_instruction": "Login setiap hari dan dapatkan point",
@@ -177,5 +177,7 @@
     "competition_event": "Kompetisi dan Event",
     "welcome_back": "Hi, Selamat Datang",
     "search_event": "Cari Event",
-    "news": "Berita"
+    "news": "Berita",
+    "category": "Kategori",
+    "new_gelleries": "Galeri Terbaru"
 }

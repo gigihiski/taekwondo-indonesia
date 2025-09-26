@@ -752,7 +752,7 @@ abstract class AppLocalizations {
   /// No description provided for @about_us.
   ///
   /// In en, this message translates to:
-  /// **'About Kampoeng Steak'**
+  /// **'About Takewondo Indonesia'**
   String get about_us;
 
   /// No description provided for @logout.
@@ -1168,6 +1168,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'News'**
   String get news;
+
+  /// No description provided for @category.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get category;
+
+  /// No description provided for @new_gelleries.
+  ///
+  /// In en, this message translates to:
+  /// **'New Galleries'**
+  String get new_gelleries;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
