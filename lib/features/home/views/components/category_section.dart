@@ -13,7 +13,7 @@ class CategorySection extends StatelessWidget {
   });
 
   final List<Category> categories;
-  final Function() onPressed;
+  final Function(int index) onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class CategorySection extends StatelessWidget {
         physics: NeverScrollableScrollPhysics(),
         itemCount: categories.length,
         itemBuilder: (context, index) => InkWell(
-          onTap: () {},
+          onTap: () => onPressed(index),
           child: Column(
             children: [
               Container(

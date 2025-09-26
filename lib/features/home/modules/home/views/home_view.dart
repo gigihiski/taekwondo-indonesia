@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:taekwondo/core/components/app_margin.dart';
+import 'package:taekwondo/core/components/app_navigator.dart';
 import 'package:taekwondo/core/components/app_search.dart';
 import 'package:taekwondo/core/components/app_text.dart';
 import 'package:taekwondo/core/models/user.dart';
@@ -9,6 +10,7 @@ import 'package:taekwondo/core/services/gallery/models/gallery.dart';
 import 'package:taekwondo/core/services/news/models/news.dart';
 import 'package:taekwondo/core/themes/app_assets.dart';
 import 'package:taekwondo/core/themes/app_colors.dart';
+import 'package:taekwondo/features/dojang/modules/dojang-list/views/dojang_list_page.dart';
 import 'package:taekwondo/features/home/modules/home/models/category.dart';
 import 'package:taekwondo/features/home/views/components/category_section.dart';
 import 'package:taekwondo/features/home/views/components/event_section.dart';
@@ -100,7 +102,23 @@ class HomeViewState extends State<HomeView> {
         Category(name: "Edukasi", icon: AppAssets.apple),
         Category(name: "Dojang", icon: AppAssets.apple),
       ],
-      onPressed: () {},
+      onPressed: (index) {
+        switch (index) {
+          case 0:
+            break;
+          case 1:
+            break;
+          case 2:
+            break;
+          case 3:
+            AppNavigator(
+              context: context,
+              page: DojangListPage(),
+              route: DojangListPage.routeSettings,
+            ).push();
+            break;
+        }
+      },
     );
 
     final mainContent = Container(

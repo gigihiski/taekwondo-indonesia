@@ -4,9 +4,10 @@ import 'package:taekwondo/core/themes/app_fonts.dart';
 final textFieldPadding = EdgeInsets.symmetric(vertical: 10, horizontal: 12);
 
 class AppSearch extends StatelessWidget {
-  const AppSearch({super.key, required this.hint});
+  const AppSearch({super.key, required this.hint, this.color = Colors.white});
 
   final String hint;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class AppSearch extends StatelessWidget {
       padding: textFieldPadding,
       height: 45,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: color,
         borderRadius: BorderRadius.circular(8),
       ),
       child: TextFormField(
