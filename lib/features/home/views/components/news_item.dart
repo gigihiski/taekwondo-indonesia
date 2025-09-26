@@ -4,6 +4,7 @@ import 'package:taekwondo/core/components/app_text.dart';
 import 'package:taekwondo/core/services/news/models/news.dart';
 import 'package:taekwondo/core/themes/app_assets.dart';
 import 'package:taekwondo/core/themes/app_colors.dart';
+import 'package:taekwondo/core/utils/extensions/date.dart';
 
 class NewsItem extends StatelessWidget {
   const NewsItem({super.key, required this.news});
@@ -18,7 +19,7 @@ class NewsItem extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.all(Radius.circular(5)),
         child: CachedNetworkImage(
-          imageUrl: news.images.first,
+          imageUrl: news.featuredImage ?? "",
           fit: BoxFit.cover,
           placeholder: (context, url) {
             return Image.asset(
@@ -67,9 +68,12 @@ class NewsItem extends StatelessWidget {
         children: [
           headline,
           SizedBox(height: 12),
-          AppTextCaption(text: "Jum'at, 18 Maret 2025", color: Colors.grey),
+          AppTextCaption(
+            text: news.publishedAt.formattedDate,
+            color: Colors.grey,
+          ),
           SizedBox(height: 12),
-          AppTextParagraph(text: news.shortDescription, color: Colors.black),
+          AppTextParagraph(text: news.summary, color: Colors.black),
         ],
       ),
     );

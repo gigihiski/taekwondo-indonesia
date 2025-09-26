@@ -17,6 +17,7 @@ import 'package:taekwondo/features/home/views/components/event_section.dart';
 import 'package:taekwondo/features/home/views/components/banner_slider.dart';
 import 'package:taekwondo/features/home/views/components/gellery_section.dart';
 import 'package:taekwondo/features/home/views/components/news_section.dart';
+import 'package:taekwondo/features/news/modules/news-list/views/news_list_page.dart';
 import 'package:taekwondo/l10n/common/material_localizations.dart';
 
 class HomeView extends StatefulWidget {
@@ -136,7 +137,16 @@ class HomeViewState extends State<HomeView> {
           ),
           SizedBox(height: 28),
           AppMargin(
-            child: NewsSection(news: widget.news, onPressed: () {}),
+            child: NewsSection(
+              news: widget.news,
+              onPressed: () {
+                AppNavigator(
+                  context: context,
+                  page: NewsListPage(),
+                  route: NewsListPage.routeSettings,
+                ).push();
+              },
+            ),
           ),
           SizedBox(height: 28),
           AppMargin(
