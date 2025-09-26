@@ -6,8 +6,12 @@ class NewsEndpoint {
 
   NewsEndpoint(this.baseUrl);
 
+  Uri getNewsById(String id) {
+    return createUrl(host: baseUrl, path: "/api/v1/news/$id");
+  }
+
   Uri getNews() {
-    return createUrl(host: baseUrl, path: "/api/v1/events");
+    return createUrl(host: baseUrl, path: "/api/v1/news");
   }
 
   factory NewsEndpoint.create() {

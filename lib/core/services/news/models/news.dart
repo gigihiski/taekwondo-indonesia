@@ -1,12 +1,10 @@
 import 'dart:convert';
 
-import 'package:intl/intl.dart';
 import 'package:taekwondo/core/models/meta.dart';
-import 'package:taekwondo/core/services/location/models/coordinate.dart';
 
 class NewsResponse {
   final Meta meta;
-  final List<News> data;
+  final News data;
 
   NewsResponse({required this.meta, required this.data});
 
@@ -15,6 +13,23 @@ class NewsResponse {
 
   factory NewsResponse.fromMap(Map<String, dynamic> map) {
     return NewsResponse(
+      meta: Meta.fromMap(map["meta"]),
+      data: News.fromMap(map["data"]),
+    );
+  }
+}
+
+class NewsesResponse {
+  final Meta meta;
+  final List<News> data;
+
+  NewsesResponse({required this.meta, required this.data});
+
+  factory NewsesResponse.fromJson(String str) =>
+      NewsesResponse.fromMap(json.decode(str));
+
+  factory NewsesResponse.fromMap(Map<String, dynamic> map) {
+    return NewsesResponse(
       meta: Meta.fromMap(map["meta"]),
       data: map['data'] != null
           ? List<News>.from(map['data'].map((x) => News.fromMap(x)))
@@ -26,20 +41,28 @@ class NewsResponse {
 class News {
   final String id;
   final String title;
-  final List<String> images;
-  final String shortDescription;
-  final String longDescription;
-  final List<String> schedules;
-  final NewsLocation location;
+  final String summary;
+  final DateTime publishedAt;
+  final int viewCount;
+  final bool isFeatured;
+
+  final NewsCategory category;
+
+  final String? slug;
+  final String? content;
+  final String? featuredImage;
 
   News({
     required this.id,
     required this.title,
-    required this.images,
-    required this.shortDescription,
-    required this.longDescription,
-    required this.schedules,
-    required this.location,
+    required this.summary,
+    required this.publishedAt,
+    required this.viewCount,
+    required this.isFeatured,
+    required this.category,
+    this.slug,
+    this.content,
+    this.featuredImage,
   });
 
   String toJson() => json.encode(toMap());
@@ -49,86 +72,43 @@ class News {
   factory News.fromMap(Map<String, dynamic> map) => News(
     id: map['id'],
     title: map['title'],
-    images: List<String>.from(map['images'].map((x) => x)),
-    shortDescription: map['short_description'],
-    longDescription: map['long_description'],
-    schedules: List<String>.from(map['schedules'].map((x) => x)),
-    location: NewsLocation.fromMap(map['location']),
+    summary: map['summary'],
+    publishedAt: DateTime.parse(map['published_at']),
+    viewCount: map['view_count'],
+    isFeatured: map['is_featured'],
+    category: NewsCategory.fromMap(map['category']),
+    slug: map['slug'],
+    content: map['content'],
+    featuredImage: map['featured_image'],
   );
-
-  List<NewsSchedule> get eventTimes {
-    final List<NewsSchedule> times = [];
-    for (var schedule in schedules) {
-      final date = schedule.substring(0, 10);
-      final startTime = schedule.substring(11, 16);
-      final endTime = schedule.substring(22, 27);
-      times.add(
-        NewsSchedule(date: date, startTime: startTime, endTime: endTime),
-      );
-    }
-    return times;
-  }
 
   Map<String, dynamic> toMap() => {
     "id": id,
     "title": title,
-    "images": List<dynamic>.from(images.map((x) => x)),
-    "short_description": shortDescription,
-    "long_description": longDescription,
-    "schedules": List<dynamic>.from(schedules.map((x) => x)),
-    "location": location.toMap(),
+    "summary": summary,
+    "published_at": publishedAt,
+    "view_count": viewCount,
+    "is_featured": isFeatured,
+    "category": category.toMap(),
+    "slug": slug,
+    "content": content,
+    "featured_image": featuredImage,
   };
 }
 
-class NewsLocation {
-  final String venue;
-  final String address;
-  final Coordinate coordinate;
+class NewsCategory {
+  final String id;
+  final String name;
 
-  NewsLocation({
-    required this.venue,
-    required this.address,
-    required this.coordinate,
-  });
+  NewsCategory({required this.id, required this.name});
 
   String toJson() => json.encode(toMap());
 
-  factory NewsLocation.fromJson(String str) =>
-      NewsLocation.fromMap(json.decode(str));
+  factory NewsCategory.fromJson(String str) =>
+      NewsCategory.fromMap(json.decode(str));
 
-  factory NewsLocation.fromMap(Map<String, dynamic> map) => NewsLocation(
-    venue: map["venue"],
-    address: map["address"],
-    coordinate: Coordinate.fromMap(map["coordinate"]),
-  );
+  factory NewsCategory.fromMap(Map<String, dynamic> map) =>
+      NewsCategory(id: map["id"], name: map["name"]);
 
-  Map<String, dynamic> toMap() => {
-    "venue": venue,
-    "address": address,
-    "coordinate": coordinate.toMap(),
-  };
-}
-
-class NewsSchedule {
-  final String date;
-  final String startTime;
-  final String endTime;
-
-  NewsSchedule({
-    required this.date,
-    required this.startTime,
-    required this.endTime,
-  });
-
-  String get formattedDate {
-    final f = DateFormat('dd/MM/yyyy');
-    final date = f.parse(this.date);
-    return DateFormat('EEEE, dd MMMM yyyy', 'id_ID').format(date);
-  }
-
-  String get formattedDateOnly {
-    final f = DateFormat('dd/MM/yyyy');
-    final date = f.parse(this.date);
-    return DateFormat('dd MMMM yyyy', 'id_ID').format(date);
-  }
+  Map<String, dynamic> toMap() => {"id": id, "name": name};
 }
