@@ -11,6 +11,7 @@ import 'package:taekwondo/core/services/news/models/news.dart';
 import 'package:taekwondo/core/themes/app_assets.dart';
 import 'package:taekwondo/core/themes/app_colors.dart';
 import 'package:taekwondo/features/dojang/modules/dojang-list/views/dojang_list_page.dart';
+import 'package:taekwondo/features/events/modules/event-list/views/event_list_page.dart';
 import 'package:taekwondo/features/home/modules/home/models/category.dart';
 import 'package:taekwondo/features/home/views/components/category_section.dart';
 import 'package:taekwondo/features/home/views/components/event_section.dart';
@@ -133,7 +134,16 @@ class HomeViewState extends State<HomeView> {
           AppMargin(child: BannerSlider(banners: widget.banners)),
           SizedBox(height: 28),
           AppMargin(
-            child: EventSection(events: widget.events, onPressed: () {}),
+            child: EventSection(
+              events: widget.events,
+              onPressed: () {
+                AppNavigator(
+                  context: context,
+                  page: EventListPage(),
+                  route: EventListPage.routeSettings,
+                ).push();
+              },
+            ),
           ),
           SizedBox(height: 28),
           AppMargin(

@@ -14,7 +14,6 @@ class EventItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final image = SizedBox(
       height: 178,
-      width: 215,
       child: CachedNetworkImage(
         imageUrl: event.images.first,
         fit: BoxFit.fitHeight,

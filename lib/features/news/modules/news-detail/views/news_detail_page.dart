@@ -64,11 +64,20 @@ class NewsDetailPageState extends State<NewsDetailPage> {
 
   @override
   Widget build(BuildContext context) {
+    final appBar = AppBar(
+      elevation: 0,
+      iconTheme: IconThemeData(color: Colors.white),
+      backgroundColor: Colors.transparent,
+    );
+
     return MultiBlocProvider(
       providers: [newsBlocProvider()],
       child: MultiBlocListener(
         listeners: [newsBlocDetailener()],
         child: Scaffold(
+          extendBodyBehindAppBar: true,
+          backgroundColor: Colors.white,
+          appBar: appBar,
           body: BlocBuilder<NewsDetailCubit, NewsDetailState>(
             builder: newsBlocBuilder(),
           ),
