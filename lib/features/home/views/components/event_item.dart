@@ -13,42 +13,52 @@ class EventItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final image = SizedBox(
-      height: 173,
-      child: Center(
-        child: CachedNetworkImage(
-          imageUrl: event.images.first,
-          fit: BoxFit.cover,
-          placeholder: (context, url) {
-            return Image.asset(
-              AppAssets.placeholder,
-              width: double.infinity,
-              fit: BoxFit.cover,
-            );
-          },
-          errorWidget: (context, url, error) {
-            return Image.asset(
-              AppAssets.placeholder,
-              width: double.infinity,
-              fit: BoxFit.cover,
-            );
-          },
-        ),
+      height: 178,
+      width: 215,
+      child: CachedNetworkImage(
+        imageUrl: event.images.first,
+        fit: BoxFit.fitHeight,
+        placeholder: (context, url) {
+          return Image.asset(AppAssets.placeholder, fit: BoxFit.contain);
+        },
+        errorWidget: (context, url, error) {
+          return Image.asset(AppAssets.placeholder, fit: BoxFit.contain);
+        },
       ),
     );
 
-    final content = Container(
-      width: MediaQuery.of(context).size.width - 24,
-      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+    final date = Container(
+      height: 32,
+      width: 32,
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
         border: Border.all(color: AppColors.platinum, width: 1),
+        borderRadius: BorderRadius.circular(4),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(height: 173, child: image),
-          SizedBox(height: 6),
+          AppTextCaptionSemiBold(text: "10"),
+          AppTextMicroSemiBold(text: "JUL"),
+        ],
+      ),
+    );
+
+    final imageContainer = Stack(
+      children: [
+        image,
+        Positioned(top: 10, left: 10, child: date),
+      ],
+    );
+
+    final content = Container(
+      height: 80,
+      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
           AppTextCaptionSemiBold(text: event.title, color: Colors.black),
           SizedBox(height: 6),
           Expanded(
@@ -57,48 +67,37 @@ class EventItem extends StatelessWidget {
               color: AppColors.spanishGray,
             ),
           ),
-          Expanded(
-            child: Row(
-              children: [
-                SizedBox(
-                  height: 16,
-                  width: 16,
-                  child: Icon(
-                    Icons.pin_drop_outlined,
-                    color: Colors.black,
-                    size: 15,
-                  ),
-                ),
-                SizedBox(width: 5),
-                AppTextMicro(text: event.location.venue, color: Colors.black),
-              ],
-            ),
-          ),
-          Expanded(
-            child: Row(
-              children: [
-                SizedBox(
-                  height: 16,
-                  width: 16,
-                  child: Icon(
-                    Icons.access_time_rounded,
-                    color: Colors.black,
-                    size: 15,
-                  ),
-                ),
-                SizedBox(width: 5),
-                AppTextMicro(
-                  text:
-                      "${event.eventTimes.first.formattedDateOnly} - ${event.eventTimes.last.formattedDateOnly}",
+          Row(
+            children: [
+              SizedBox(
+                height: 16,
+                width: 16,
+                child: Icon(
+                  Icons.pin_drop_outlined,
                   color: Colors.black,
+                  size: 15,
                 ),
-              ],
-            ),
+              ),
+              SizedBox(width: 5),
+              AppTextMicro(text: event.location.venue, color: Colors.black),
+            ],
           ),
         ],
       ),
     );
 
-    return content;
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(12),
+      child: Container(
+        height: 275,
+        width: 215,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: AppColors.platinum, width: 1),
+        ),
+        child: Column(children: [imageContainer, SizedBox(height: 6), content]),
+      ),
+    );
   }
 }

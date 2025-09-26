@@ -27,7 +27,7 @@ class EventSection extends StatelessWidget {
     );
 
     final content = SizedBox(
-      height: 280,
+      height: 275,
       child: ListView.separated(
         padding: EdgeInsets.zero,
         shrinkWrap: true,
