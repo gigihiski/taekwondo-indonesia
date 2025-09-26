@@ -69,14 +69,6 @@ class ProfileView extends StatelessWidget {
             onTap: () {
               switch (index) {
                 case 0:
-                case 1:
-                case 2:
-                // AppNavigator(
-                //   context: context,
-                //   page: PaymentMethodPage(outlet: "OEM"),
-                //   route: PaymentMethodPage.routeSettings,
-                // ).push();
-                case 3:
                   AppNavigator(
                     context: context,
                     page: WebviewPage(
@@ -85,13 +77,17 @@ class ProfileView extends StatelessWidget {
                     ),
                     route: WebviewPage.routeSettings,
                   ).push();
-                case 4:
+                  break;
+                case 1:
                   AppNavigator(
                     context: context,
                     page: LanguagePage(),
                     route: LanguagePage.routeSettings,
                   ).push();
-                case 6:
+                  break;
+                case 2:
+                  break;
+                case 3:
                   AppNavigator(
                     context: context,
                     page: WebviewPage(
@@ -101,7 +97,7 @@ class ProfileView extends StatelessWidget {
                     ),
                     route: WebviewPage.routeSettings,
                   ).push();
-                case 7:
+                case 4:
                   AppNavigator(
                     context: context,
                     page: WebviewPage(
@@ -111,7 +107,7 @@ class ProfileView extends StatelessWidget {
                     ),
                     route: WebviewPage.routeSettings,
                   ).push();
-                case 8:
+                case 5:
                   AppNavigator(
                     context: context,
                     page: WebviewPage(
@@ -121,7 +117,7 @@ class ProfileView extends StatelessWidget {
                     ),
                     route: WebviewPage.routeSettings,
                   ).push();
-                case 9:
+                case 6:
                   AppConfirmation(
                     title: L10n.localizations(context).logout,
                     description: L10n.localizations(

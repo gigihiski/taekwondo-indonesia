@@ -336,7 +336,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get terms_conditions => 'Terms and Conditions';
 
   @override
-  String get about_us => 'About Kampoeng Steak';
+  String get about_us => 'About Takewondo Indonesia';
 
   @override
   String get logout => 'Logout';
@@ -544,4 +544,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get news => 'News';
+
+  @override
+  String get category => 'Category';
+
+  @override
+  String get new_gelleries => 'New Galleries';
 }

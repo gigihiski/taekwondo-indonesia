@@ -108,7 +108,7 @@
     "notification_setting": "Notifications",
     "privacy_policy": "Privacy Policy",
     "terms_conditions": "Terms and Conditions",
-    "about_us": "About Kampoeng Steak",
+    "about_us": "About Takewondo Indonesia",
     "logout": "Logout",
     "daily_quest": "Daily Quest",
     "daily_quest_instruction": "Login everyday and get the point",
@@ -177,5 +177,7 @@
     "competition_event": "Competition and Event",
     "welcome_back": "Hi, Welcome Back",
     "search_event": "Search Event",
-    "news": "News"
+    "news": "News",
+    "category": "Category",
+    "new_gelleries": "New Galleries"
 }

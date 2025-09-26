@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:taekwondo/core/components/app_bar.dart';
 import 'package:taekwondo/core/services/banner/banner_repository.dart';
 import 'package:taekwondo/core/services/event/event_repository.dart';
+import 'package:taekwondo/core/services/gallery/gallery_repository.dart';
 import 'package:taekwondo/core/services/news/news_repository.dart';
 import 'package:taekwondo/core/services/storages/profile_storage.dart';
 import 'package:taekwondo/features/home/modules/home/logics/home_cubit.dart';
@@ -40,6 +41,7 @@ class HomePageState extends State<HomePage> {
         profileStorage: ProfileStorage.create(),
         eventRepository: EventRepository.create(),
         newsRepository: NewsRepository.create(),
+        galleryRepository: GalleryRepository.create(),
         bannerRepository: BannerRepository.create(),
       )..init(),
     );
@@ -71,6 +73,7 @@ class HomePageState extends State<HomePage> {
             user: state.user!,
             events: state.events,
             news: state.news,
+            galleries: state.galleries,
             banners: state.banners,
           );
         case HomeStatus.unAuthenticated:
