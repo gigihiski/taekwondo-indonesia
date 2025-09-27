@@ -3,6 +3,9 @@
         android:label="Taekwondo Indonesia"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCPQtgmlc80kpSIs8LWSj7qEG-cmzWt3ws" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
