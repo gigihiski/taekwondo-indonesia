@@ -34,8 +34,8 @@ class EventDetailViewState extends State<EventDetailView> {
       child: CachedNetworkImage(
         height: 441,
         colorBlendMode: BlendMode.darken,
-        color: Colors.black.withOpacity(0.3),
-        imageUrl: "https://picsum.photos/600/300",
+        color: Colors.black.withAlpha(30),
+        imageUrl: widget.event.images.first,
         fit: BoxFit.cover,
         placeholder: (context, url) {
           return Image.asset(AppAssets.placeholder, fit: BoxFit.cover);

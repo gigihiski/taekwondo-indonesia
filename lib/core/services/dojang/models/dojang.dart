@@ -41,15 +41,18 @@ class Dojang {
   final String id;
   final String name;
   final String status;
-  final String country;
   final DateTime createdAt;
 
-  final String? province;
-  final String? city;
+  final String? address;
   final String? district;
+  final String? city;
+  final String? province;
   final double? latitude;
   final double? longitude;
 
+  final String? description;
+
+  final String? website;
   final String? email;
   final String? phoneNumber;
 
@@ -59,13 +62,15 @@ class Dojang {
     required this.id,
     required this.name,
     required this.status,
-    required this.country,
     required this.createdAt,
+    this.address,
     this.province,
     this.city,
     this.district,
     this.latitude,
     this.longitude,
+    this.description,
+    this.website,
     this.email,
     this.phoneNumber,
     this.logoUrl,
@@ -79,31 +84,35 @@ class Dojang {
     id: map['id'],
     name: map['name'],
     status: map['status'],
-    country: map['country'],
     createdAt: DateTime.parse(map['created_at']),
+    address: map['address'],
     province: map['province'],
     city: map['city'],
     district: map['district'],
-    latitude: map['latitude'],
-    longitude: map['longitude'],
+    latitude: map['domicile_latitude'],
+    longitude: map['domicile_longitude'],
+    description: map['description'],
+    website: map['website'],
     email: map['email'],
     phoneNumber: map['phone_number'],
-    logoUrl: map['logo_url'],
+    logoUrl: map['dojang_logo_url'],
   );
 
   Map<String, dynamic> toMap() => {
     "id": id,
     "name": name,
     "status": status,
-    "country": country,
     "created_at": createdAt,
+    "address": address,
     "province": province,
     "city": city,
     "district": district,
     "latitude": latitude,
     "longitude": longitude,
+    "description": description,
+    "website": website,
     "email": email,
     "phone_number": phoneNumber,
-    "logo_url": logoUrl,
+    "dojang_logo_url": logoUrl,
   };
 }

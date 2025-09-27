@@ -18,7 +18,7 @@ class DojangItem extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.all(Radius.circular(5)),
         child: CachedNetworkImage(
-          imageUrl: "",
+          imageUrl: dojang.logoUrl ?? "",
           fit: BoxFit.cover,
           placeholder: (context, url) {
             return Image.asset(
@@ -44,7 +44,7 @@ class DojangItem extends StatelessWidget {
       children: [
         Icon(Icons.location_on_outlined, size: 16, color: Colors.grey),
         SizedBox(width: 4),
-        AppTextCaptionSemiBold(text: dojang.country),
+        AppTextCaptionSemiBold(text: "${dojang.city}, ${dojang.province}"),
       ],
     );
 
