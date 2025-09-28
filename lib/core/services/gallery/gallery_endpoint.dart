@@ -6,8 +6,20 @@ class GalleryEndpoint {
 
   GalleryEndpoint(this.baseUrl);
 
+  Uri getGalleryCategories() {
+    return createUrl(host: baseUrl, path: "/api/v1/gallery-categories");
+  }
+
+  Uri getGalleryByCategoryId(String categoryId) {
+    return createUrl(
+      host: baseUrl,
+      path: "/api/v1/galleries",
+      queryParameters: {"category_id": categoryId},
+    );
+  }
+
   Uri getGalleries() {
-    return createUrl(host: baseUrl, path: "/api/v1/events");
+    return createUrl(host: baseUrl, path: "/api/v1/galleries");
   }
 
   factory GalleryEndpoint.create() {
