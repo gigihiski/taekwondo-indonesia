@@ -8,6 +8,14 @@ extension FormattedDateTime on DateTime {
   String get formattedDate {
     return DateFormat('EEE, dd MMMM yyyy').format(this);
   }
+
+  String get formattedDay {
+    return DateFormat('dd').format(this);
+  }
+
+  String get formattedMonth {
+    return DateFormat('MMM').format(this);
+  }
 }
 
 extension FormattedDate on DateTime {

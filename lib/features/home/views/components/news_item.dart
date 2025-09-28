@@ -19,7 +19,7 @@ class NewsItem extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.all(Radius.circular(5)),
         child: CachedNetworkImage(
-          imageUrl: news.featuredImage ?? "",
+          imageUrl: news.bannerUrl ?? "",
           fit: BoxFit.cover,
           placeholder: (context, url) {
             return Image.asset(
@@ -43,7 +43,7 @@ class NewsItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AppTextCaptionSemiBold(text: "Seminar", color: Colors.red),
+          AppTextCaptionSemiBold(text: news.category.name, color: Colors.red),
           SizedBox(height: 6),
           AppTextH4SemiBold(text: news.title),
         ],

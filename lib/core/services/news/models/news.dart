@@ -41,28 +41,24 @@ class NewsesResponse {
 class News {
   final String id;
   final String title;
-  final String summary;
   final DateTime publishedAt;
-  final int viewCount;
-  final bool isFeatured;
+  final int? viewCount;
 
   final NewsCategory category;
 
-  final String? slug;
+  final String? summary;
   final String? content;
-  final String? featuredImage;
+  final String? bannerUrl;
 
   News({
     required this.id,
     required this.title,
-    required this.summary,
     required this.publishedAt,
-    required this.viewCount,
-    required this.isFeatured,
     required this.category,
-    this.slug,
+    this.summary,
+    this.viewCount,
     this.content,
-    this.featuredImage,
+    this.bannerUrl,
   });
 
   String toJson() => json.encode(toMap());
@@ -75,11 +71,9 @@ class News {
     summary: map['summary'],
     publishedAt: DateTime.parse(map['published_at']),
     viewCount: map['view_count'],
-    isFeatured: map['is_featured'],
     category: NewsCategory.fromMap(map['category']),
-    slug: map['slug'],
     content: map['content'],
-    featuredImage: map['featured_image'],
+    bannerUrl: map['banner_url'] ?? map["featured_image"],
   );
 
   Map<String, dynamic> toMap() => {
@@ -88,11 +82,9 @@ class News {
     "summary": summary,
     "published_at": publishedAt,
     "view_count": viewCount,
-    "is_featured": isFeatured,
     "category": category.toMap(),
-    "slug": slug,
     "content": content,
-    "featured_image": featuredImage,
+    "banner_url": bannerUrl,
   };
 }
 

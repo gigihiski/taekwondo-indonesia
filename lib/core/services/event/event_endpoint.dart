@@ -6,6 +6,10 @@ class EventEndpoint {
 
   EventEndpoint(this.baseUrl);
 
+  Uri getEventById(String id) {
+    return createUrl(host: baseUrl, path: "/api/v1/events/$id");
+  }
+
   Uri getEvents() {
     return createUrl(host: baseUrl, path: "/api/v1/events");
   }
