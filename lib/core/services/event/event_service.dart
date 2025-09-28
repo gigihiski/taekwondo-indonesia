@@ -5,6 +5,7 @@ import 'package:taekwondo/core/services/event/models/event.dart';
 import 'package:taekwondo/core/utils/exceptions/app_exception.dart';
 
 abstract class IEventService {
+  Future<Event> getEventById(String id);
   Future<List<Event>> getEvents();
 }
 
@@ -16,17 +17,28 @@ class EventService implements IEventService {
   EventService(this.httpClient, this.headerProvider, this.endpoint);
 
   @override
-  Future<List<Event>> getEvents() async {
-    final url = endpoint.getEvents();
-    print(url);
+  Future<Event> getEventById(String id) async {
+    final url = endpoint.getEventById(id);
     final headers = await headerProvider.headers;
     final response = await httpClient.get(url, headers);
-    print(response.body);
     if (response.statusCode != 200) {
       final meta = Meta.fromJson(response.body);
       throw AppException(meta.message);
     }
     final body = EventResponse.fromJson(response.body);
+    return body.data;
+  }
+
+  @override
+  Future<List<Event>> getEvents() async {
+    final url = endpoint.getEvents();
+    final headers = await headerProvider.headers;
+    final response = await httpClient.get(url, headers);
+    if (response.statusCode != 200) {
+      final meta = Meta.fromJson(response.body);
+      throw AppException(meta.message);
+    }
+    final body = EventsResponse.fromJson(response.body);
     return body.data;
   }
 

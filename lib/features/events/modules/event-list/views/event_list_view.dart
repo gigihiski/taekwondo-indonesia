@@ -53,7 +53,7 @@ class EventListViewState extends State<EventListView> {
                 onTap: () {
                   AppNavigator(
                     context: context,
-                    page: EventDetailPage(event: widget.event[index]),
+                    page: EventDetailPage(id: widget.event[index].id),
                     route: EventDetailPage.routeSettings,
                   ).push();
                 },

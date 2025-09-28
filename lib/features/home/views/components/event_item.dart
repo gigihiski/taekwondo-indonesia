@@ -4,6 +4,7 @@ import 'package:taekwondo/core/components/app_text.dart';
 import 'package:taekwondo/core/services/event/models/event.dart';
 import 'package:taekwondo/core/themes/app_assets.dart';
 import 'package:taekwondo/core/themes/app_colors.dart';
+import 'package:taekwondo/core/utils/extensions/date.dart';
 
 class EventItem extends StatelessWidget {
   const EventItem({super.key, required this.event});
@@ -15,13 +16,13 @@ class EventItem extends StatelessWidget {
     final image = SizedBox(
       height: 178,
       child: CachedNetworkImage(
-        imageUrl: event.images.first,
-        fit: BoxFit.fitHeight,
+        imageUrl: event.coverImg,
+        fit: BoxFit.cover,
         placeholder: (context, url) {
-          return Image.asset(AppAssets.placeholder, fit: BoxFit.contain);
+          return Image.asset(AppAssets.placeholder, fit: BoxFit.cover);
         },
         errorWidget: (context, url, error) {
-          return Image.asset(AppAssets.placeholder, fit: BoxFit.contain);
+          return Image.asset(AppAssets.placeholder, fit: BoxFit.cover);
         },
       ),
     );
@@ -38,8 +39,12 @@ class EventItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          AppTextCaptionSemiBold(text: "10"),
-          AppTextMicroSemiBold(text: "JUL"),
+          AppTextCaptionSemiBold(
+            text: event.date.formattedDay,
+            color: Colors.black,
+          ),
+          SizedBox(height: 4),
+          AppTextMicroSemiBold(text: event.date.formattedMonth),
         ],
       ),
     );
@@ -62,7 +67,7 @@ class EventItem extends StatelessWidget {
           SizedBox(height: 6),
           Expanded(
             child: AppTextMicro(
-              text: event.shortDescription,
+              text: event.description,
               color: AppColors.spanishGray,
             ),
           ),
@@ -78,7 +83,10 @@ class EventItem extends StatelessWidget {
                 ),
               ),
               SizedBox(width: 5),
-              AppTextMicro(text: event.location.venue, color: Colors.black),
+              AppTextMicro(
+                text: "${event.city}, ${event.province}",
+                color: Colors.black,
+              ),
             ],
           ),
         ],

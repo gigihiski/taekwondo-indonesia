@@ -36,7 +36,7 @@ class NewsDetailViewState extends State<NewsDetailView> {
       ),
       child: CachedNetworkImage(
         height: 320,
-        imageUrl: "https://picsum.photos/600/300",
+        imageUrl: widget.news.bannerUrl ?? "",
         fit: BoxFit.cover,
         placeholder: (context, url) {
           return Image.asset(AppAssets.placeholder, fit: BoxFit.cover);
