@@ -33,17 +33,20 @@ class GallerySection extends StatelessWidget {
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         itemCount: galleries.length,
-        itemBuilder: (context, index) => ClipRRect(
-          borderRadius: BorderRadius.circular(12),
-          child: SizedBox(
-            width: 215,
-            height: 292,
-            child: CachedNetworkImage(
-              imageUrl: galleries[index].path,
-              fit: BoxFit.cover,
-              placeholder: (context, url) =>
-                  Center(child: CircularProgressIndicator()),
-              errorWidget: (context, url, error) => Icon(Icons.error),
+        itemBuilder: (context, index) => InkWell(
+          onTap: () {},
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: SizedBox(
+              width: 215,
+              height: 292,
+              child: CachedNetworkImage(
+                imageUrl: galleries[index].imageUrl,
+                fit: BoxFit.cover,
+                placeholder: (context, url) =>
+                    Center(child: CircularProgressIndicator()),
+                errorWidget: (context, url, error) => Icon(Icons.error),
+              ),
             ),
           ),
         ),

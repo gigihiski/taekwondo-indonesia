@@ -12,11 +12,12 @@ import 'package:taekwondo/core/themes/app_assets.dart';
 import 'package:taekwondo/core/themes/app_colors.dart';
 import 'package:taekwondo/features/dojang/modules/dojang-list/views/dojang_list_page.dart';
 import 'package:taekwondo/features/events/modules/event-list/views/event_list_page.dart';
+import 'package:taekwondo/features/gallery/modules/gallery-category-list/views/gallery_category_list_page.dart';
 import 'package:taekwondo/features/home/modules/home/models/category.dart';
 import 'package:taekwondo/features/home/views/components/category_section.dart';
 import 'package:taekwondo/features/home/views/components/event_section.dart';
 import 'package:taekwondo/features/home/views/components/banner_slider.dart';
-import 'package:taekwondo/features/home/views/components/gellery_section.dart';
+import 'package:taekwondo/features/home/views/components/gallery_section.dart';
 import 'package:taekwondo/features/home/views/components/news_section.dart';
 import 'package:taekwondo/features/news/modules/news-list/views/news_list_page.dart';
 import 'package:taekwondo/features/registration/modules/dojang-registration/views/dojang_registration_page.dart';
@@ -168,7 +169,13 @@ class HomeViewState extends State<HomeView> {
           AppMargin(
             child: GallerySection(
               galleries: widget.galleries,
-              onPressed: () {},
+              onPressed: () {
+                AppNavigator(
+                  context: context,
+                  page: GalleryCategoryListPage(),
+                  route: GalleryCategoryListPage.routeSettings,
+                ).push();
+              },
             ),
           ),
           SizedBox(height: 120),
