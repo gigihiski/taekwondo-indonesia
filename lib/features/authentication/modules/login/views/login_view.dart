@@ -163,24 +163,27 @@ class LoginViewState extends State<LoginView> {
       ),
     );
 
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        image: DecorationImage(
-          image: AssetImage(AppAssets.background),
-          fit: BoxFit.cover,
+    return SingleChildScrollView(
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          image: DecorationImage(
+            image: AssetImage(AppAssets.background),
+            fit: BoxFit.cover,
+          ),
         ),
-      ),
-      child: AppMargin(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            header,
-            SizedBox(height: 60),
-            Image.asset(AppAssets.logo, width: 175, height: 175),
-            SizedBox(height: 50),
-            authenticationSection,
-          ],
+        child: AppMargin(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              header,
+              SizedBox(height: 60),
+              Image.asset(AppAssets.logo, width: 175, height: 175),
+              SizedBox(height: 50),
+              authenticationSection,
+              SizedBox(height: 80),
+            ],
+          ),
         ),
       ),
     );
