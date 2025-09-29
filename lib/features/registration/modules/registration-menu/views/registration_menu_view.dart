@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:taekwondo/core/components/app_navigator.dart';
 import 'package:taekwondo/core/components/app_text.dart';
+import 'package:taekwondo/features/registration/modules/athlete-registration/views/athlete_registration_page.dart';
 import 'package:taekwondo/features/registration/modules/dojang-registration/views/dojang_registration_page.dart';
 
 class RegistrationMenuView extends StatefulWidget {
@@ -39,8 +40,8 @@ class RegistrationMenuViewState extends State<RegistrationMenuView> {
         menu(Icon(Icons.menu), "Pendaftaran Atlit", () {
           AppNavigator(
             context: context,
-            page: DojangRegistrationPage(),
-            route: DojangRegistrationPage.routeSettings,
+            page: AthleteRegistrationPage(),
+            route: AthleteRegistrationPage.routeSettings,
           ).push();
         }),
         menu(Icon(Icons.menu), "Pendaftaran Pelatih", () {
