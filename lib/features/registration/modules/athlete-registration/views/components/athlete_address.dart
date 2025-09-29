@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:taekwondo/core/components/app_dropdown.dart';
 import 'package:taekwondo/core/components/app_text.dart';
-import 'package:taekwondo/core/components/app_text_field.dart';
 
 class AthleteAddress extends StatelessWidget {
   const AthleteAddress({super.key});
@@ -11,30 +10,23 @@ class AthleteAddress extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        AppTextCaptionSemiBold(text: "Alamat Athlete"),
+        AppTextCaptionSemiBold(text: "Nama Dojang"),
         SizedBox(height: 8),
         AppDropDown(
-          title: "Provinsi",
-          hint: "Pilih Provinsi",
+          title: "Dojang",
+          hint: "Pilih Dojang",
           options: [],
           onChanged: (index) {},
         ),
+        SizedBox(height: 10),
+        AppTextCaptionSemiBold(text: "Nama Pelatih"),
         SizedBox(height: 8),
         AppDropDown(
-          title: "Kota/Kabupaten",
-          hint: "Pilih Kota/Kabupaten",
+          title: "Pelatih",
+          hint: "Pilih Pelatih",
           options: [],
           onChanged: (index) {},
         ),
-        SizedBox(height: 8),
-        AppDropDown(
-          title: "Kecamatan",
-          hint: "Pilih Kecamatan",
-          options: [],
-          onChanged: (index) {},
-        ),
-        SizedBox(height: 8),
-        AppTextField(hint: "URL Google Maps"),
       ],
     );
   }

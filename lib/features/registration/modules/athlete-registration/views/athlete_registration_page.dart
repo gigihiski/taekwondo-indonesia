@@ -16,7 +16,8 @@ class AthleteRegistrationPage extends StatefulWidget {
   );
 
   @override
-  State<AthleteRegistrationPage> createState() => AthleteRegistrationPageState();
+  State<AthleteRegistrationPage> createState() =>
+      AthleteRegistrationPageState();
 }
 
 class AthleteRegistrationPageState extends State<AthleteRegistrationPage> {
@@ -63,7 +64,7 @@ class AthleteRegistrationPageState extends State<AthleteRegistrationPage> {
   @override
   Widget build(BuildContext context) {
     final appBar = AppBarHeader(
-      title: "Pendaftaran Athlete",
+      title: "Pendaftaran Atlit",
       color: Colors.white,
     );
 
