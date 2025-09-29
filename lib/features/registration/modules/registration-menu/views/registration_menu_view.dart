@@ -4,6 +4,7 @@ import 'package:taekwondo/core/components/app_text.dart';
 import 'package:taekwondo/features/registration/modules/athlete-registration/views/athlete_registration_page.dart';
 import 'package:taekwondo/features/registration/modules/dojang-registration/views/dojang_registration_page.dart';
 import 'package:taekwondo/features/registration/modules/examiner-registration/views/examiner_registration_page.dart';
+import 'package:taekwondo/features/registration/modules/management-registration/views/management_registration_page.dart';
 import 'package:taekwondo/features/registration/modules/refree-registration/views/refree_registration_page.dart';
 import 'package:taekwondo/features/registration/modules/trainer-registration/views/trainer_registration_page.dart';
 
@@ -57,8 +58,8 @@ class RegistrationMenuViewState extends State<RegistrationMenuView> {
         menu(Icon(Icons.menu), "Pendaftaran Pengurus", () {
           AppNavigator(
             context: context,
-            page: DojangRegistrationPage(),
-            route: DojangRegistrationPage.routeSettings,
+            page: ManagementRegistrationPage(),
+            route: ManagementRegistrationPage.routeSettings,
           ).push();
         }),
         menu(Icon(Icons.menu), "Pendaftaran Penguji", () {
