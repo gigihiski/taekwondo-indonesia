@@ -116,6 +116,11 @@ class HomeViewState extends State<HomeView> {
             ).push();
             break;
           case 1:
+            AppNavigator(
+              context: context,
+              page: GalleryCategoryListPage(),
+              route: GalleryCategoryListPage.routeSettings,
+            ).push();
             break;
           case 2:
             break;
