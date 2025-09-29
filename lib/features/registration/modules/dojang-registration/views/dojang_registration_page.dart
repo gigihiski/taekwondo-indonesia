@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:taekwondo/core/components/app_bar.dart';
 import 'package:taekwondo/features/registration/modules/dojang-registration/logics/dojang_registration_cubit.dart';
 import 'package:taekwondo/features/registration/modules/dojang-registration/views/dojang_registration_view.dart';
 
@@ -61,12 +62,9 @@ class DojangRegistrationPageState extends State<DojangRegistrationPage> {
 
   @override
   Widget build(BuildContext context) {
-    final appBar = AppBar(
-      elevation: 0,
-      iconTheme: IconThemeData(color: Colors.white),
-      backgroundColor: Colors.transparent,
-      actionsPadding: EdgeInsets.only(right: 12),
-      actions: [],
+    final appBar = AppBarHeader(
+      title: "Pendaftaran Dojang",
+      color: Colors.white,
     );
 
     return MultiBlocProvider(

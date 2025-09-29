@@ -13,6 +13,9 @@ class AppAssets {
   // Image
   static const String google = 'assets/images/google.png';
   static const String apple = 'assets/images/apple.png';
+  static const String qris = 'assets/images/qris.png';
+  static const String gpn = 'assets/images/gpn.png';
+  static const String taekwondoQr = 'assets/images/taekwondo_qr.png';
 
   static const String placeholder = 'assets/images/placeholder.png';
   static const String banner = 'assets/images/banner.png';

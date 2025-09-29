@@ -56,7 +56,7 @@ class AppDropDownState<T> extends State<AppDropDown<T>> {
       height: 46,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color: Colors.white,
+        color: AppColors.background,
       ),
       child: Center(
         child: TextFormField(
