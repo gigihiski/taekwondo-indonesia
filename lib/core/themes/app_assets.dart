@@ -16,6 +16,8 @@ class AppAssets {
   static const String qris = 'assets/images/qris.png';
   static const String gpn = 'assets/images/gpn.png';
   static const String taekwondoQr = 'assets/images/taekwondo_qr.png';
+  static const String success = 'assets/images/success.png';
+  static const String failed = 'assets/images/failed.png';
 
   static const String placeholder = 'assets/images/placeholder.png';
   static const String banner = 'assets/images/banner.png';

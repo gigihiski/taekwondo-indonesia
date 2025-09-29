@@ -5,7 +5,6 @@ import 'package:taekwondo/core/themes/app_colors.dart';
 import 'package:taekwondo/features/registration/modules/dojang-registration/views/components/dojang_address.dart';
 import 'package:taekwondo/features/registration/modules/dojang-registration/views/components/dojang_management.dart';
 import 'package:taekwondo/features/registration/modules/dojang-registration/views/components/dojang_personal.dart';
-import 'package:taekwondo/features/registration/modules/payment/views/payment_page.dart';
 import 'package:taekwondo/features/registration/modules/payment/views/payment_view.dart';
 
 class DojangRegistrationView extends StatefulWidget {

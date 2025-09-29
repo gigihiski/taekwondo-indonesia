@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:taekwondo/core/components/app_navigator.dart';
 import 'package:taekwondo/core/components/app_text.dart';
 import 'package:taekwondo/core/themes/app_assets.dart';
 import 'package:taekwondo/core/themes/app_colors.dart';
+import 'package:taekwondo/features/registration/modules/payment-status/views/success_payment_page.dart';
 
 class PaymentView extends StatefulWidget {
   const PaymentView({super.key});
@@ -133,7 +135,13 @@ class PaymentViewState extends State<PaymentView> {
                 label: Text('Bagikan'),
               ),
               ElevatedButton.icon(
-                onPressed: () {},
+                onPressed: () {
+                  AppNavigator(
+                    context: context,
+                    page: SuccessPaymentPage(),
+                    route: SuccessPaymentPage.routeSettings,
+                  ).push();
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.black,
                   foregroundColor: Colors.white,
