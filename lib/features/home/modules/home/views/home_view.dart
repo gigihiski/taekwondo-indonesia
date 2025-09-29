@@ -20,7 +20,7 @@ import 'package:taekwondo/features/home/views/components/banner_slider.dart';
 import 'package:taekwondo/features/home/views/components/gallery_section.dart';
 import 'package:taekwondo/features/home/views/components/news_section.dart';
 import 'package:taekwondo/features/news/modules/news-list/views/news_list_page.dart';
-import 'package:taekwondo/features/registration/modules/dojang-registration/views/dojang_registration_page.dart';
+import 'package:taekwondo/features/registration/modules/registration-menu/views/registration_menu_page.dart';
 import 'package:taekwondo/l10n/common/material_localizations.dart';
 
 class HomeView extends StatefulWidget {
@@ -111,8 +111,8 @@ class HomeViewState extends State<HomeView> {
           case 0:
             AppNavigator(
               context: context,
-              page: DojangRegistrationPage(),
-              route: DojangRegistrationPage.routeSettings,
+              page: RegistrationMenuPage(),
+              route: RegistrationMenuPage.routeSettings,
             ).push();
             break;
           case 1:
