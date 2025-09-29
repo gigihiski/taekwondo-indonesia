@@ -3,6 +3,7 @@ import 'package:taekwondo/core/components/app_navigator.dart';
 import 'package:taekwondo/core/components/app_text.dart';
 import 'package:taekwondo/features/registration/modules/athlete-registration/views/athlete_registration_page.dart';
 import 'package:taekwondo/features/registration/modules/dojang-registration/views/dojang_registration_page.dart';
+import 'package:taekwondo/features/registration/modules/trainer-registration/views/trainer_registration_page.dart';
 
 class RegistrationMenuView extends StatefulWidget {
   const RegistrationMenuView({super.key});
@@ -47,8 +48,8 @@ class RegistrationMenuViewState extends State<RegistrationMenuView> {
         menu(Icon(Icons.menu), "Pendaftaran Pelatih", () {
           AppNavigator(
             context: context,
-            page: DojangRegistrationPage(),
-            route: DojangRegistrationPage.routeSettings,
+            page: TrainerRegistrationPage(),
+            route: TrainerRegistrationPage.routeSettings,
           ).push();
         }),
         menu(Icon(Icons.menu), "Pendaftaran Pengurus", () {
