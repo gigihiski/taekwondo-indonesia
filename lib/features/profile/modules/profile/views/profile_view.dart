@@ -8,6 +8,7 @@ import 'package:taekwondo/core/models/user.dart';
 import 'package:taekwondo/core/themes/app_assets.dart';
 import 'package:taekwondo/core/themes/app_colors.dart';
 import 'package:taekwondo/features/profile/models/profile_menu.dart';
+import 'package:taekwondo/features/profile/modules/edit-profile/views/edit_profile_page.dart';
 import 'package:taekwondo/features/profile/modules/language/views/language_page.dart';
 import 'package:taekwondo/features/profile/modules/profile/logics/profile_cubit.dart';
 import 'package:taekwondo/features/webview/views/webview_page.dart';
@@ -73,11 +74,8 @@ class ProfileView extends StatelessWidget {
                 case 0:
                   AppNavigator(
                     context: context,
-                    page: WebviewPage(
-                      title: L10n.localizations(context).help,
-                      url: "https://taekwondo.or.id",
-                    ),
-                    route: WebviewPage.routeSettings,
+                    page: EditProfilePage(),
+                    route: EditProfilePage.routeSettings,
                   ).push();
                   break;
                 case 1:
