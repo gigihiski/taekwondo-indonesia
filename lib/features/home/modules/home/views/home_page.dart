@@ -8,6 +8,8 @@ import 'package:taekwondo/core/services/news/news_repository.dart';
 import 'package:taekwondo/core/services/storages/profile_storage.dart';
 import 'package:taekwondo/features/home/modules/home/logics/home_cubit.dart';
 import 'package:taekwondo/features/home/modules/home/views/home_view.dart';
+import 'package:taekwondo/features/home/modules/notification-list/views/notification_list_page.dart';
+import 'package:taekwondo/features/home/modules/transaction-list/views/transaction_list_page.dart';
 import 'package:taekwondo/features/home/views/components/home_navigation.dart';
 import 'package:taekwondo/features/profile/modules/profile/views/profile_page.dart';
 
@@ -85,9 +87,9 @@ class HomePageState extends State<HomePage> {
   Widget showPage(int index) {
     switch (index) {
       case 1:
-        return Container();
+        return NotificationListPage();
       case 2:
-        return Container();
+        return TransactionListPage();
       case 3:
         return ProfilePage();
       default:
