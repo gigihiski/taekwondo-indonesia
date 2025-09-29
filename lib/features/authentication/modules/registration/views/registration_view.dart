@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_validation/form_validation.dart';
 import 'package:taekwondo/core/components/app_button.dart';
 import 'package:taekwondo/core/components/app_checkbox.dart';
+import 'package:taekwondo/core/components/app_dropdown.dart';
 import 'package:taekwondo/core/components/app_margin.dart';
 import 'package:taekwondo/core/components/app_message.dart';
 import 'package:taekwondo/core/components/app_navigator.dart';
@@ -155,6 +156,20 @@ class RegistrationViewState extends State<RegistrationView> {
                 value: value,
               );
             },
+          ),
+          SizedBox(height: 12),
+          AppDropDown<String>(
+            title: "Tipe Pengguna",
+            hint: "Daftar Sebagai",
+            options: [
+              "Atlet",
+              "Pelatih",
+              "Penguji",
+              "Wasit",
+              "Pengurus",
+              "Dojang",
+            ],
+            onChanged: (index) {},
           ),
           SizedBox(height: 12),
           AppButtonLargeSecondary(

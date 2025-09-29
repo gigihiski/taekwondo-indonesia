@@ -30,9 +30,11 @@ class AppDropDown<T> extends StatefulWidget {
 
 class AppDropDownState<T> extends State<AppDropDown<T>> {
   late TextEditingController controller;
+  late T? selectedValue;
 
   @override
   void initState() {
+    selectedValue = null;
     controller = TextEditingController();
     super.initState();
   }
@@ -69,7 +71,85 @@ class AppDropDownState<T> extends State<AppDropDown<T>> {
       ),
     );
 
-    return InkWell(onTap: () {}, child: container);
+    Widget buildBottomSheetContent() {
+      return Container(
+        height: MediaQuery.of(context).size.height * 0.6,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
+          ),
+        ),
+        child: Column(
+          children: [
+            // Header
+            Container(
+              padding: EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                border: Border(bottom: BorderSide(color: Colors.grey.shade300)),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Pilih Opsi',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.close),
+                    onPressed: () => Navigator.pop(context),
+                  ),
+                ],
+              ),
+            ),
+
+            // Options List
+            Expanded(
+              child: ListView.builder(
+                itemCount: widget.options.length,
+                itemBuilder: (context, index) {
+                  final option = widget.options[index];
+                  return ListTile(
+                    leading: selectedValue == option
+                        ? Icon(Icons.check, color: Colors.blue)
+                        : Icon(
+                            Icons.radio_button_unchecked,
+                            color: Colors.grey,
+                          ),
+                    title: Text(option as String),
+                    onTap: () {
+                      setState(() {
+                        widget.onChanged(index);
+                        selectedValue = option;
+                        controller.text = option;
+                      });
+                      Navigator.pop(context);
+                    },
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    void showBottomSheet() {
+      showModalBottomSheet(
+        context: context,
+        backgroundColor: Colors.transparent,
+        isScrollControlled: true,
+        builder: (context) => buildBottomSheetContent(),
+      );
+    }
+
+    return InkWell(
+      onTap: () {
+        showBottomSheet();
+      },
+      child: container,
+    );
   }
 }
 

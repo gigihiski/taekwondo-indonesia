@@ -5,7 +5,6 @@ import 'package:taekwondo/core/themes/app_colors.dart';
 import 'package:taekwondo/features/profile/modules/edit-profile/views/components/edit_profile_address.dart';
 import 'package:taekwondo/features/profile/modules/edit-profile/views/components/edit_profile_contact.dart';
 import 'package:taekwondo/features/profile/modules/edit-profile/views/components/edit_profile_personal.dart';
-import 'package:taekwondo/features/registration/modules/payment/views/payment_view.dart';
 
 class EditProfileView extends StatefulWidget {
   const EditProfileView({super.key});
