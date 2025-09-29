@@ -156,21 +156,15 @@ class ProfileView extends StatelessWidget {
 
     final information = Row(
       crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         SizedBox(
-          width: 80,
+          width: 150,
           child: AppTextH2SourGummySemiBold(
-            text: L10n.localizations(context).daily_quest,
+            text: L10n.localizations(context).welcome_back,
             color: AppColors.primary,
           ),
         ),
-        SizedBox(width: 15),
-        Expanded(
-          child: AppTextCaption(
-            text: L10n.localizations(context).daily_quest_instruction,
-          ),
-        ),
-        SizedBox(width: 15),
         SizedBox(width: 89, height: 90, child: Image.asset(AppAssets.logo)),
       ],
     );
