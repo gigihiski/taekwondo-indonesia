@@ -1163,6 +1163,12 @@ abstract class AppLocalizations {
   /// **'Search Event'**
   String get search_event;
 
+  /// No description provided for @search_news.
+  ///
+  /// In en, this message translates to:
+  /// **'Search News'**
+  String get search_news;
+
   /// No description provided for @news.
   ///
   /// In en, this message translates to:

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:taekwondo/core/components/app_header.dart';
 import 'package:taekwondo/core/components/app_text.dart';
 import 'package:taekwondo/core/themes/app_colors.dart';
@@ -39,7 +40,10 @@ class CategorySection extends StatelessWidget {
                   color: AppColors.primary,
                   borderRadius: BorderRadius.circular(35),
                 ),
-                child: Image.asset(categories[index].icon, color: Colors.white),
+                child: SvgPicture.asset(
+                  categories[index].icon,
+                  color: Colors.white,
+                ),
               ),
               SizedBox(height: 5),
               AppTextCaptionSemiBold(text: categories[index].name),

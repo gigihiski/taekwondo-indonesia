@@ -543,6 +543,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get search_event => 'Search Event';
 
   @override
+  String get search_news => 'Search News';
+
+  @override
   String get news => 'News';
 
   @override

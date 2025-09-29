@@ -543,6 +543,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get search_event => 'Cari Event';
 
   @override
+  String get search_news => 'Cari Berita';
+
+  @override
   String get news => 'Berita';
 
   @override

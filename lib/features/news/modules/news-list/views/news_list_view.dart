@@ -29,7 +29,7 @@ class NewsListViewState extends State<NewsListView> {
   @override
   Widget build(BuildContext context) {
     Widget header = AppSearch(
-      hint: L10n.localizations(context).search_event,
+      hint: L10n.localizations(context).search_news,
       color: Colors.grey.shade100,
     );
 

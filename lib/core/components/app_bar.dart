@@ -10,6 +10,7 @@ class AppBarHeader extends StatelessWidget implements PreferredSizeWidget {
     this.height = 60,
     this.textColor = Colors.black,
     this.actions = const [],
+    this.isEnabledBackButton = true,
   });
 
   final String title;
@@ -17,11 +18,12 @@ class AppBarHeader extends StatelessWidget implements PreferredSizeWidget {
   final double height;
   final Color textColor;
   final List<Widget> actions;
+  final bool isEnabledBackButton;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: BackButton(color: textColor),
+      leading: isEnabledBackButton ? BackButton(color: textColor) : null,
       backgroundColor: color,
       elevation: 0,
       titleSpacing: 0,

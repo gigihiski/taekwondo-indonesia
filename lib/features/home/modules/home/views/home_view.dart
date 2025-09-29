@@ -101,10 +101,10 @@ class HomeViewState extends State<HomeView> {
 
     final category = CategorySection(
       categories: [
-        Category(name: "Registrasi", icon: AppAssets.apple),
-        Category(name: "Multimedia", icon: AppAssets.apple),
-        Category(name: "Edukasi", icon: AppAssets.apple),
-        Category(name: "Dojang", icon: AppAssets.apple),
+        Category(name: "Registrasi", icon: AppAssets.registration),
+        Category(name: "Multimedia", icon: AppAssets.multimedia),
+        Category(name: "Edukasi", icon: AppAssets.education),
+        Category(name: "Dojang", icon: AppAssets.dojang),
       ],
       onPressed: (index) {
         switch (index) {

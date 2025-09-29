@@ -65,7 +65,11 @@ class NotificationListPageState extends State<NotificationListPage> {
 
   @override
   Widget build(BuildContext context) {
-    final appBar = AppBarHeader(title: "Notification", color: Colors.white);
+    final appBar = AppBarHeader(
+      title: "Notification",
+      color: Colors.white,
+      isEnabledBackButton: false,
+    );
 
     return MultiBlocProvider(
       providers: [newsBlocProvider()],

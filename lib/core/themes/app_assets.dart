@@ -25,6 +25,11 @@ class AppAssets {
   static const String ukFlag = 'assets/images/uk_flag.svg';
   static const String idFlag = 'assets/images/id_flag.svg';
 
+  static const String dojang = 'assets/images/dojang.svg';
+  static const String registration = 'assets/images/registration.svg';
+  static const String multimedia = 'assets/images/multimedia.svg';
+  static const String education = 'assets/images/education.svg';
+
   static const String star = 'assets/images/star.png';
 
   static const String email = 'assets/images/email.svg';

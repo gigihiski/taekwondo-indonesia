@@ -152,7 +152,7 @@ class DojangDetailViewState extends State<DojangDetailView> {
               borderRadius: BorderRadius.all(Radius.circular(5)),
               child: CachedNetworkImage(
                 width: 198,
-                imageUrl: "https://picsum.photos/600/300",
+                imageUrl: widget.dojang.logoUrl ?? "",
                 fit: BoxFit.cover,
                 placeholder: (context, url) {
                   return Image.asset(AppAssets.placeholder, fit: BoxFit.cover);

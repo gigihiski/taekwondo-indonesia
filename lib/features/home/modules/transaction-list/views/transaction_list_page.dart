@@ -65,7 +65,11 @@ class TransactionListPageState extends State<TransactionListPage> {
 
   @override
   Widget build(BuildContext context) {
-    final appBar = AppBarHeader(title: "Transaksi", color: Colors.white);
+    final appBar = AppBarHeader(
+      title: "Transaksi",
+      color: Colors.white,
+      isEnabledBackButton: false,
+    );
 
     return MultiBlocProvider(
       providers: [newsBlocProvider()],
