@@ -8,6 +8,11 @@ class AppColors {
     500: Color(0xFFED1C24),
   });
 
+  /// Brandeis Blue -- #0676FD
+  static const brandeisBlue = MaterialColor(0xFF0676FD, <int, Color>{
+    500: Color(0xFF0676FD),
+  });
+
   /// Saffron -- #F1BB31
   static const saffron = MaterialColor(0xFFF1BB31, <int, Color>{
     500: Color(0xFFF1BB31),

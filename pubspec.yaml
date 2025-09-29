@@ -71,7 +71,7 @@ dependencies:
   google_sign_in: ^6.3.0
 
   # Image Picker
-  image_picker: ^1.1.2
+  image_picker: ^1.2.0
 
   # Firebase
   firebase_core: ^4.1.0
@@ -103,18 +103,13 @@ dependencies:
 
   # Slider
   carousel_slider: ^5.1.1
+  easy_stepper: ^0.8.5+1
 
   # Rating
   flutter_rating_bar: ^4.0.1
 
   # Staggered Grid
   flutter_staggered_grid_view: ^0.7.0
-
-  # QR Code
-  mobile_scanner: ^7.0.1
-
-  # Graph
-  d_chart: ^3.0.0
 
   # Social Media Share
   share_plus: ^11.0.0
