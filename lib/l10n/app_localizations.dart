@@ -1180,6 +1180,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'New Galleries'**
   String get new_gelleries;
+
+  /// No description provided for @edit_profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Profile'**
+  String get edit_profile;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

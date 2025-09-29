@@ -22,6 +22,10 @@ class ProfileView extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<ProfileMenu> profileMenus = [
       ProfileMenu(
+        icon: AppAssets.user,
+        title: L10n.localizations(context).edit_profile,
+      ),
+      ProfileMenu(
         icon: AppAssets.help,
         title: L10n.localizations(context).help,
       ),
@@ -79,13 +83,23 @@ class ProfileView extends StatelessWidget {
                 case 1:
                   AppNavigator(
                     context: context,
+                    page: WebviewPage(
+                      title: L10n.localizations(context).help,
+                      url: "https://taekwondo.or.id",
+                    ),
+                    route: WebviewPage.routeSettings,
+                  ).push();
+                  break;
+                case 2:
+                  AppNavigator(
+                    context: context,
                     page: LanguagePage(),
                     route: LanguagePage.routeSettings,
                   ).push();
                   break;
-                case 2:
-                  break;
                 case 3:
+                  break;
+                case 4:
                   AppNavigator(
                     context: context,
                     page: WebviewPage(
@@ -95,7 +109,7 @@ class ProfileView extends StatelessWidget {
                     ),
                     route: WebviewPage.routeSettings,
                   ).push();
-                case 4:
+                case 5:
                   AppNavigator(
                     context: context,
                     page: WebviewPage(
@@ -105,7 +119,7 @@ class ProfileView extends StatelessWidget {
                     ),
                     route: WebviewPage.routeSettings,
                   ).push();
-                case 5:
+                case 6:
                   AppNavigator(
                     context: context,
                     page: WebviewPage(
@@ -115,7 +129,7 @@ class ProfileView extends StatelessWidget {
                     ),
                     route: WebviewPage.routeSettings,
                   ).push();
-                case 6:
+                case 7:
                   AppConfirmation(
                     title: L10n.localizations(context).logout,
                     description: L10n.localizations(

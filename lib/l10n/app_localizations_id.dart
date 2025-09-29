@@ -550,4 +550,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get new_gelleries => 'Galeri Terbaru';
+
+  @override
+  String get edit_profile => 'Profile';
 }
