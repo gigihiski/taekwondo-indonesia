@@ -552,6 +552,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get category => 'Category';
 
   @override
+  String get menu => 'Menu';
+
+  @override
   String get new_gelleries => 'New Galleries';
 
   @override

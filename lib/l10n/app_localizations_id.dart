@@ -552,6 +552,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get category => 'Kategori';
 
   @override
+  String get menu => 'Menu';
+
+  @override
   String get new_gelleries => 'Galeri Terbaru';
 
   @override

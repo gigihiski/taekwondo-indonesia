@@ -18,7 +18,7 @@ class CategorySection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final header = AppHeaderTitle(text: L10n.localizations(context).category);
+    final header = AppHeaderTitle(text: L10n.localizations(context).menu);
 
     final content = SizedBox(
       height: 90,
@@ -40,10 +40,7 @@ class CategorySection extends StatelessWidget {
                   color: AppColors.primary,
                   borderRadius: BorderRadius.circular(35),
                 ),
-                child: SvgPicture.asset(
-                  categories[index].icon,
-                  color: Colors.white,
-                ),
+                child: SvgPicture.asset(categories[index].icon),
               ),
               SizedBox(height: 5),
               AppTextCaptionSemiBold(text: categories[index].name),
