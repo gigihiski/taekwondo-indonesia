@@ -33,13 +33,9 @@ class HomeCubit extends Cubit<HomeState> {
       emit(state.copyWith(status: HomeStatus.loading));
 
       final User user = await profileStorage.profile;
-      print(user.toJson());
       final events = await eventRepository.getEvents();
-      print(events.length);
       final news = await newsRepository.getNews();
-      print(news.length);
       final galleries = await galleryRepository.getGalleries();
-      print(galleries.length);
       final banners = await bannerRepository.getBanners();
 
       emit(

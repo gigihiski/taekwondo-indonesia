@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:taekwondo/core/services/banner/models/banner.dart';
 import 'package:taekwondo/core/themes/app_assets.dart';
@@ -84,20 +83,7 @@ class PromotionCard extends StatelessWidget {
       borderRadius: BorderRadius.circular(12),
       child: SizedBox(
         width: MediaQuery.of(context).size.width - 24,
-        child: CachedNetworkImage(
-          imageUrl: banner.path,
-          fit: BoxFit.cover,
-          placeholder: (context, url) => Image.asset(
-            AppAssets.placeholder,
-            width: double.infinity,
-            fit: BoxFit.cover,
-          ),
-          errorWidget: (context, url, error) => Image.asset(
-            AppAssets.placeholder,
-            width: double.infinity,
-            fit: BoxFit.cover,
-          ),
-        ),
+        child: Image.asset(AppAssets.banner, fit: BoxFit.cover),
       ),
     );
   }
